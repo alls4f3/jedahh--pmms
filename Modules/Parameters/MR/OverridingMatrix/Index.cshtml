@@ -1,0 +1,805 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Overriding Matrix";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+
+    <div class="">
+
+        <div class="grid-title"><div class="title-text">M&amp;R Overriding Matrix</div></div>
+
+
+        <div style="font-size:x-small;" class="">
+
+
+            <table class=" table table-bordered text-center" style="width:100%;">
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th rowspan="2">Pavement M&amp;R</th>
+                        <th colspan="3">Threshold Value</th>
+                        <th colspan="3">Overriding M&amp;R</th>
+                        <th rowspan="2">Sidewalk &amp; Median M&amp;R</th>
+                        <th rowspan="2">Is Greater Than (% of Section Area)</th>
+                        <th rowspan="2">Apply M&amp;R to Whole Section Area</th>
+                    </tr>
+                    <tr>
+
+                        <th>Main Roads</th>
+                        <th>Local Roads</th>
+                        <th>Utility Roads</th>
+                        <th>Main Roads</th>
+                        <th>Local Roads</th>
+                        <th>Utility Roads</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR15" name="MR15" value="15" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id0" name="MR15_TV_M" value="@Model[0].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id10" name="MR15_TV_L" value="@Model[10].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id40" name="MR15_TV_U" value="@Model[40].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id20" name="MR15_OR_M" value="@Model[20].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id30" name="MR15_OR_L" value="@Model[30].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id50" name="MR15_OR_U" value="@Model[50].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR15_SideMR" name="MR15_SideMR" value="8" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id60" name="MR15_SideGreater" value="@Model[60].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id67" name="MR15_SideApplyWhole" value="@Model[67].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR14" name="MR14" value="14" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id1" name="MR14_TV_M" value="@Model[1].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id11" name="MR14_TV_L" value="@Model[11].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id41" name="MR14_TV_U" value="@Model[41].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id21" name="MR14_OR_M" value="@Model[21].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id31" name="MR14_OR_L" value="@Model[31].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id51" name="MR14_OR_U" value="@Model[51].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR14_SideMR" name="MR14_SideMR" value="7" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id61" name="MR14_SideGreater" value="@Model[61].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id68" name="MR14_SideApplyWhole" value="@Model[68].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR13" name="MR13" value="13" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id2" name="MR13_TV_M" value="@Model[2].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id12" name="MR13_TV_L" value="@Model[12].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id42" name="MR13_TV_U" value="@Model[42].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id22" name="MR13_OR_M" value="@Model[22].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id32" name="MR13_OR_L" value="@Model[32].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id52" name="MR13_OR_U" value="@Model[52].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR13_SideMR" name="MR13_SideMR" value="6" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id62" name="MR13_SideGreater" value="@Model[62].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id69" name="MR13_SideApplyWhole" value="@Model[69].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR12" name="MR12" value="12" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id3" name="MR12_TV_M" value="@Model[3].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id13" name="MR12_TV_L" value="@Model[13].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id43" name="MR12_TV_U" value="@Model[43].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id23" name="MR12_OR_M" value="@Model[23].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id33" name="MR12_OR_L" value="@Model[33].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id53" name="MR12_OR_U" value="@Model[53].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR12_SideMR" name="MR12_SideMR" value="5" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id63" name="MR12_SideGreater" value="@Model[63].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id70" name="MR12_SideApplyWhole" value="@Model[70].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR11" name="MR11" value="11" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id4" name="MR11_TV_M" value="@Model[4].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id14" name="MR11_TV_L" value="@Model[14].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id44" name="MR11_TV_U" value="@Model[44].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id24" name="MR11_OR_M" value="@Model[24].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id34" name="MR11_OR_L" value="@Model[34].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id54" name="MR11_OR_U" value="@Model[54].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR11_SideMR" name="MR11_SideMR" value="4" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id64" name="MR11_SideGreater" value="@Model[64].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id71" name="MR11_SideApplyWhole" value="@Model[71].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR10" name="MR10" value="10" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id5" name="MR10_TV_M" value="@Model[5].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id15" name="MR10_TV_L" value="@Model[15].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id45" name="MR10_TV_U" value="@Model[45].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id25" name="MR10_OR_M" value="@Model[25].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id35" name="MR10_OR_L" value="@Model[35].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id55" name="MR10_OR_U" value="@Model[55].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR10_SideMR" name="MR10_SideMR" value="3" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id65" name="MR10_SideGreater" value="@Model[65].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id72" name="MR10_SideApplyWhole" value="@Model[72].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR9" name="MR9" value="9" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id6" name="MR9_TV_M" value="@Model[6].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id16" name="MR9_TV_L" value="@Model[16].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id46" name="MR9_TV_U" value="@Model[46].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id26" name="MR9_OR_M" value="@Model[26].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id36" name="MR9_OR_L" value="@Model[36].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id56" name="MR9_OR_U" value="@Model[56].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="MR9_SideMR" name="MR9_SideMR" value="2" type="text" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id66" name="MR9_SideGreater" value="@Model[66].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id73" name="MR9_SideApplyWhole" value="@Model[73].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR8" name="MR8" value="8" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id7" name="MR8_TV_M" value="@Model[7].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id17" name="MR8_TV_L" value="@Model[17].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id47" name="MR8_TV_U" value="@Model[47].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id27" name="MR8_OR_M" value="@Model[27].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id37" name="MR8_OR_L" value="@Model[37].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id57" name="MR8_OR_U" value="@Model[57].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR7" name="MR7" value="7" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id8" name="MR7_TV_M" value="@Model[8].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id18" name="MR7_TV_L" value="@Model[18].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id48" name="MR7_TV_U" value="@Model[48].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id28" name="MR7_OR_M" value="@Model[28].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id38" name="MR7_OR_L" value="@Model[38].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id58" name="MR7_OR_U" value="@Model[58].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR6" name="MR6" value="6" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id9" name="MR6_TV_M" value="@Model[9].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id19" name="MR6_TV_L" value="@Model[19].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id49" name="MR6_TV_U" value="@Model[49].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id29" name="MR6_OR_M" value="@Model[29].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id39" name="MR6_OR_L" value="@Model[39].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id59" name="MR6_OR_U" value="@Model[59].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR5" name="MR5" value="5" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id74" name="MR5_TV_M" value="@Model[74].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id76" name="MR5_TV_L" value="@Model[76].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id82" name="MR5_TV_U" value="@Model[82].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id78" name="MR5_OR_M" value="@Model[78].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id80" name="MR5_OR_L" value="@Model[80].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id84" name="MR5_OR_U" value="@Model[84].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div class="">
+                                <input id="MR56" name="MR56" value="5+6" type="text" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id75" name="MR56_TV_M" value="@Model[75].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id77" name="MR56_TV_L" value="@Model[77].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id83" name="MR56_TV_U" value="@Model[83].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id79" name="MR56_OR_M" value="@Model[79].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="id81" name="MR56_OR_L" value="@Model[81].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="">
+                                <input id="id85" name="MR56_OR_U" value="@Model[85].Text" type="number" min="0" step="0.01" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#save').click(function () {
+
+        if (valid() == true) {
+
+
+
+
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                    Q.blockUndo();
+                },
+                type: "GET",
+                url: "/Parameters/OverridingMatrix/SaveData",
+                data: {
+                    m0: $('#id0').val(),
+                    m1: $('#id1').val(),
+                    m2: $('#id2').val(),
+                    m3: $('#id3').val(),
+                    m4: $('#id4').val(),
+                    m5: $('#id5').val(),
+                    m6: $('#id6').val(),
+                    m7: $('#id7').val(),
+                    m8: $('#id8').val(),
+                    m9: $('#id9').val(),
+                    m10: $('#id10').val(),
+                    m11: $('#id11').val(),
+                    m12: $('#id12').val(),
+                    m13: $('#id13').val(),
+                    m14: $('#id14').val(),
+                    m15: $('#id15').val(),
+                    m16: $('#id16').val(),
+                    m17: $('#id17').val(),
+                    m18: $('#id18').val(),
+                    m19: $('#id19').val(),
+                    m20: $('#id20').val(),
+                    m21: $('#id21').val(),
+                    m22: $('#id22').val(),
+                    m23: $('#id23').val(),
+                    m24: $('#id24').val(),
+                    m25: $('#id25').val(),
+                    m26: $('#id26').val(),
+                    m27: $('#id27').val(),
+                    m28: $('#id28').val(),
+                    m29: $('#id29').val(),
+                    m30: $('#id30').val(),
+                    m31: $('#id31').val(),
+                    m32: $('#id32').val(),
+                    m33: $('#id33').val(),
+                    m34: $('#id34').val(),
+                    m35: $('#id35').val(),
+                    m36: $('#id36').val(),
+                    m37: $('#id37').val(),
+                    m38: $('#id38').val(),
+                    m39: $('#id39').val(),
+                    m40: $('#id40').val(),
+                    m41: $('#id41').val(),
+                    m42: $('#id42').val(),
+                    m43: $('#id43').val(),
+                    m44: $('#id44').val(),
+                    m45: $('#id45').val(),
+                    m46: $('#id46').val(),
+                    m47: $('#id47').val(),
+                    m48: $('#id48').val(),
+                    m49: $('#id49').val(),
+                    m50: $('#id50').val(),
+                    m51: $('#id51').val(),
+                    m52: $('#id52').val(),
+                    m53: $('#id53').val(),
+                    m54: $('#id54').val(),
+                    m55: $('#id55').val(),
+                    m56: $('#id56').val(),
+
+                    m57: $('#id57').val(),
+                    m58: $('#id58').val(),
+                    m59: $('#id59').val(),
+                    m60: $('#id60').val(),
+                    m61: $('#id61').val(),
+                    m62: $('#id62').val(),
+                    m63: $('#id63').val(),
+                    m64: $('#id64').val(),
+                    m65: $('#id65').val(),
+                    m66: $('#id66').val(),
+                    m67: $('#id67').val(),
+                    m68: $('#id68').val(),
+                    m69: $('#id69').val(),
+                    m70: $('#id70').val(),
+                    m71: $('#id71').val(),
+                    m72: $('#id72').val(),
+                    m73: $('#id73').val(),
+                    m74: $('#id74').val(),
+                    m75: $('#id75').val(),
+                    m76: $('#id76').val(),
+                    m77: $('#id77').val(),
+                    m78: $('#id78').val(),
+                    m79: $('#id79').val(),
+                    m80: $('#id80').val(),
+                    m81: $('#id81').val(),
+                    m82: $('#id82').val(),
+                    m83: $('#id83').val(),
+                    m84: $('#id84').val(),
+                    m85: $('#id85').val(),
+                   
+
+
+
+
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == 'done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.warning("Message", "Error!")
+
+
+                    }
+                }
+            })
+        }
+        else {
+            Q.warning("Invalid Value - All values must Numbers !")
+        }
+
+    });
+    function valid() {
+        var flag = false;
+        for (i = 0; i < 85; i++) {
+          
+
+                if (isNaN($("#id" + i).val()) || $("#id" + i).val() == "") {
+                    $("#id" + i).css('border-color', "red")
+                    
+                    flag = false;
+                    console.log(i)
+
+                    break;
+                } else {
+                    flag = true;
+                    $("#id" + i).css('border-color', "#d2d6de")
+
+                }
+           
+
+
+
+
+        }
+        return flag;
+    }
+
+</script>

@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Business Intelligence Center";
+
+
+}
+
+
+
+@section Head {
+
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+    @WebReportGlobals.ScriptsWOjQuery()
+    @WebReportGlobals.Styles()
+
+}
+
+
+
+
+@if (@System.Web.HttpContext.Current.Request.QueryString["Report"] == null)
+{
+    <div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+        <iframe src="/ReportsCenterd" width="100%" height="900"></iframe>
+
+    </div>
+
+}
+else
+{
+    <div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+        <iframe src="/ReportsCenterd?Report=@System.Web.HttpContext.Current.Request.QueryString["Report"].ToString()" width="100%" height="900"></iframe>
+
+    </div>
+
+}
+
+

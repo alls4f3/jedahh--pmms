@@ -1,0 +1,144 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Browse";
+    Layout = null;
+}
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+    <link href="~/Content/BI/Tele/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="~/Content/BI/Tele/styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="~/Content/BI/Tele/styles/kendo.default.min.css" rel="stylesheet">
+
+
+    <script src="~/Content/BI/Tele/js/kendo.all.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+    <div class="">
+        <div class="grid-title">
+            <h2>File Box Server</h2>
+        </div>
+
+        <div id="example">
+            <div id="filemanager"></div>
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+
+
+
+
+<script>
+    $("#filemanager").kendoFileManager({
+        dataSource: {
+            schema: kendo.data.schemas.filemanager,
+            transport: {
+                read: {
+                    url: "/Apps/FileManager/Read",
+                    method: "POST"
+                },
+                create: {
+                    url: "/Apps/FileManager/Create",
+                    method: "POST"
+                },
+                update: {
+                    url: "/Apps/FileManager/Update",
+                    method: "POST"
+                },
+                destroy: {
+                    url: "/Apps/FileManager/Destroy",
+                    method: "POST"
+                }
+            }
+        },
+        uploadUrl: "/Apps/FileManager/Upload",
+        toolbar: {
+            items: [
+                { name: "createFolder" },
+                { name: "upload" },
+
+                { name: "sortDirection" },
+                { name: "sortField" },
+                { name: "changeView" },
+                { name: "spacer" },
+                { name: "details" },
+                { name: "search" }
+            ]
+        },
+
+        contextMenu: {
+            items: [
+                { name: "rename" },
+
+                { name: "delete" },
+                { name: "Download", text: "Download", command: "MyCustomDownload", spriteCssClass: "k-icon k-i-info" }
+
+            ]
+        },
+        draggable: false,
+        resizable: false
+    });
+
+    $(document).ready(function () {
+        var filemanager = $("#filemanager").getKendoFileManager();
+
+        filemanager.executeCommand({ command: "TogglePaneCommand", options: { type: "preview" } });
+        $("#details-toggle").getKendoSwitch().toggle();
+
+        var filemanagerNS = kendo.ui.filemanager;
+
+        filemanagerNS.commands.MyCustomDownload = filemanagerNS.FileManagerCommand.extend({
+            exec: function () {
+                var that = this,
+                    filemanager = that.filemanager, // get the kendo.ui.FileManager instance
+                    options = that.options, // get the options passed through the tool
+                    target = options.target // options.target is available only when command is executed from the context menu
+                selectedFiles = filemanager.getSelected(); // get the selected files
+
+                if (selectedFiles[0].isDirectory == true) {
+                    alert("Cannot download Folder");
+                } else {
+                    window.open('/Apps/FileManager/Download?path=' + selectedFiles[0].path, "_blank");
+
+                }
+
+
+            }
+        });
+    })
+</script>

@@ -1,0 +1,253 @@
+     <div class="sidebar-submenu col-md-2">
+
+            <div style="margin-bottom:8pt">
+                <label style=""> Road Category</label>
+                <select class="form-control form-control-sm" id="RoadCategorydll" name="RoadCategorydll" style="margin-bottom:8pt;">
+                    
+
+                </select>
+
+            </div>
+
+
+            <div style="margin-bottom:8pt">
+                <label style="">City</label>
+                <select class="form-control form-control-sm" id="CityID" name="CityID" style="margin-bottom:8pt;">
+                    <option value="0">Please Select City</option>
+
+                </select>
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style="">Zone)</label>
+                <select id="ZoneID" name="ZoneID" class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select City First</option>
+                </select>
+
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style=""> Area</label>
+                <select id="AreaID" name="AreaID" class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Zone First</option>
+                </select>
+
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style=""> Road</label>
+                <select id="RoadID" name="RoadID" class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Area First</option>
+                </select>
+
+
+            </div>
+           
+		   
+		    <div class="col-sm-2">
+             
+                <input id="btnRefreash" name="save" type="button" value="Filter" class="btn btn-success btn-sm" style=" background-color: #dd7a33 !important; color: white; border-color: #dd7a33 !important; ">
+                   
+              
+                </div>
+
+
+        </div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+  
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/GetRoadCategory",
+            success: function (result) {
+
+                var dropdown = $('#RoadCategorydll');
+                dropdown.append('<option selected="true" value="0">All road Category</option>');
+                dropdown.prop('selectedIndex', 0);
+
+                $.each(result, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+
+                })
+            }
+       
+
+            
+        });
+		
+		
+		
+		
+		
+		     $.ajax({
+            type: "GET",
+            url: "/sysapi/getcity",
+            data: {
+                //  OID: orderid,
+
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var dropdown = $('#CityID');
+                var dropdownzone = $('#ZoneID');
+                var dropdownarea = $('#AreaID');
+                var dropRoadID = $('#RoadID');
+             
+
+                dropdown.empty();
+                dropdownzone.empty();
+                dropdownarea.empty();
+
+                dropRoadID.empty();
+            
+
+
+                dropdown.append('<option selected="true" disabled>Please Select City</option>');
+                dropdown.prop('selectedIndex', 0);
+
+
+                $.each(result, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+
+
+                $("#CityID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getZone",
+                        data: { id: $("#CityID").val() },
+                        success: function (t) {
+                          
+							
+							
+
+
+                            dropdownzone.empty();
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+                         
+
+                      
+
+
+                            dropdownzone.append('<option selected="true" disabled>Please Select  Zone</option>');
+                            dropdownzone.prop('selectedIndex', 0);
+
+
+                            $.each(t, function (key, entry) {
+                                dropdownzone.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+                        }
+                    });
+
+                })
+
+            
+                
+
+                $("#ZoneID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getAreas",
+                        data: { id: $("#ZoneID").val(), id2: $("#CityID").val() },
+                        success: function (x) {
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+                          
+
+                          
+                            dropdownarea.append('<option selected="true" disabled>Select Area</option>');
+                            dropdownarea.prop('selectedIndex', 0);
+                          
+
+
+                            $.each(x, function (key, entry) {
+                                dropdownarea.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+
+                })
+
+            
+                $("#AreaID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getRoadCategoryItem",
+                        data: { id: $("#CityID").val(), id2: $("#ZoneID").val(), id3: $("#AreaID").val(), Category: $("#RoadCategorydll").val() },
+                        success: function (x) {
+
+                            dropRoadID.empty();
+                         
+
+
+
+                            dropRoadID.append('<option selected="true" disabled>Select Road</option>');
+                            dropRoadID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropRoadID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+
+
+
+
+
+
+
+
+
+
+
+
+
+            },
+            error: function (response) {
+
+                console.log(response);
+            }
+        });
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		});
+		
+		</script>

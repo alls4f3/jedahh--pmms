@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>الرئيسية</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Favicon and touch icons  -->
+    <link href="~/Content/external/images/favicon.ico" rel="shortcut icon">
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Arabic+Kufi">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/bootstrap.css">
+    <!-- owl -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/owl.carousel.css">
+    <!-- shortcodes -->
+    <!-- revolution-slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/revolution-slider.css">
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/responsive.css">
+    <!-- new-style -->
+   <!-- <link rel="stylesheet" type="text/css" href="~/Content/external/css/new-style.css">-->
+   <!-- <link rel="stylesheet" type="text/css" href="~/Content/external/css/new-style.css">
+    <!-- Animation Style -->
+    <link rel="stylesheet" type="text/css" href="~/Content/external/css/animate.css">
+</head>
+
+<body>
+    <div id="preload">
+        <div id="preload-content">
+            <div class="preload-bounce"> <span class="bounce1">L</span> <span class="bounce2">o</span> <span class="bounce3">a</span> <span class="bounce4">d</span> <span class="bounce5">i</span> <span class="bounce6">n</span> <span class="bounce7">g</span> </div>
+        </div>
+    </div>
+    <div class="box">
+
+        @*<header id="header">
+                <div class="top-bar">
+                    <!--   <div class="srch">
+                    <button><i class="fa fa-search"></i></button>
+                    <input type="text" />
+                </div>-->
+                    <!-- <div class=" country"> <a href="#"><span class="caret"></span> English </a>
+                 <img src="~/Content/external/images/en-flag.PNG" alt=""> </div>-->
+                    <ul class="top-lnks">
+                        <li>
+                            <a href="/Account/Login"> <i class="fa fa-lock"></i><span> تسجيل الدخول </span></a>
+                        </li>
+                        <li>
+                            <a href="/Account/SignUp"> <i class="fa fa-user"></i> <span> سجل الآن </span></a>
+                        </li>
+
+                    </ul>
+                    <!-- <div class="welcom-Usr"><span>مرحبا بالزائر الكريم :</span><h2> محمد على محمود</h2></div> -->
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="scnd-bar" data-spy="affix" data-offset-top="42">
+                    <a class="logo" href="/"><img src="~/Content/external/images/AmtarF.jpg" alt="" /></a>
+                    <a class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <i class="fa fa-list"></i> </a>
+                    <nav class="navbar">
+                        <div class="collapse navbar-collapse pn" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/"><i class="fa fa-home"></i> الرئيسية</a></li>
+                                <li> <a href="/about">  عن أمتار</a> </li>
+                                <li><a href="howto"> كيف تستفيد عبر أمتار  <span class="other-lang"></span></a></li>
+                                <li><a href="Locations"> الموقع والمكان  </a></li>
+                                <li><a href="contact-us"> اتصل بنا </a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="clearfix"> </div>
+                </div>
+            </header>*@
+        <!--/.header -->
+
+
+        @RenderBody()
+
+        <footer class="footer">
+            <div class="footer-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget widget_recent_posts">
+                                <h3 class="widget-title">  تواصل معنا</h3>
+                                <table class="contact-list">
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="col1"><i class="fa fa-fax"></i></td>
+                                            <td class="col2"><h3>+966 135845247</h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1"><i class="fa fa-mobile"></i></td>
+                                            <td class="col2"><h3>+966 505960012</h3></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="col1"><i class="fa fa-whatsapp"></i></td>
+                                            <td class="col2"><h3> <a href="http://wa.me/966505960012" target="_blank">رسالة واتس أب</a></h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1"><i class="fa fa-envelope"></i></td>
+                                            <td class="col2"><h3 style="text-transform: capitalize;">Amtar.svg@amtarsvg.com</h3></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.widget_recent_entries -->
+                        </div>
+                        <div class="col-md-4"></div>
+
+                        <div class="col-md-4">
+                            <div class="widget widget-link clearfix">
+                                <h3 class="widget-title"> روابط مختصرة </h3>
+                                <ul class="links">
+                                    <li><a href="/about"> من نحن</a></li>
+                                    <li><a href="/Account/SignUp">سجل الآن</a></li>
+                                    <li><a href="/Account/Login">تسجيل دخول </a></li>
+
+
+
+
+                                </ul>
+                                <ul style="margin-right: 70px;" class="links">
+                                    <li><a href="#">اللوائح والشروط</a></li>
+                                    <li><a href="#"> سياسة الخصوصية</a></li>
+                                    <li><a href="/contact-us"> اتصل بنا</a></li>
+                                    @*<li>عدد الزوار<img class="statcounter"
+     src="https://c.statcounter.com/12223126/0/007b2c17/0/"
+     alt="web stats" style=" max-width: inherit; /* max-height: 10px; */ min-height: inherit; padding-right: 10px; "></li>*@
+
+                                   
+                                </ul>
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="col-md-4">
+                            <div class="widget widget-link clearfix">
+                                <h3 class="widget-title"> القائمة البريدية</h3>
+                                <p class="footP"> إشترك عبر القائمة البريدية لتصلك آخر عروضنا واخر خصوماتنا اولا باول عبر موقعنا الإلكتروني ...</p>
+                                <input type="text" class="form-control mt5" placeholder="البريد الإلكتروني">
+                                <button class="btn btn-default pull-left btncol3 btn-style01">إشتراك</button>
+                            </div>
+                        </div>-->
+                        <!-- /.col-md-3 -->
+
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.footer-widgets -->
+
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyrght text-center">
+                                <div class="copyrght-content">
+                                    <div class="copyrgt">جميع الحقوق محفوظة لدى <a href="#" class="other-lang"> AmtarSvg.Com</a></div>
+
+                                </div>
+                            </div>
+                            <!-- Go Top -->
+                        </div>
+                        <!-- /.col-md-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.footer-content -->
+        </footer>
+
+    </div>
+    <!--box -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="~/Content/external/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/jquery.easing.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/imagesloaded.min.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/custom.js"></script>
+
+    <!-- Revolution Slider -->
+    <script type="text/javascript" src="~/Content/external/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="~/Content/external/js/slider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $(".owl-clents").owlCarousel({
+                rtl: true,
+                loop: true,
+                dots: false,
+                margin: 5,
+                nav: false,
+                navText: ['<i class="fa fa-long-arrow-right"></i>', '<i class="fa fa-long-arrow-left"></i>'],
+                responsive: {
+                    0: { items: 1, nav: false, },
+                    480: { items: 2, nav: false, },
+                    768: { items: 3, nav: false, },
+                    1000: { items: 5, nav: false, }
+                }
+            });
+
+
+        });
+
+
+
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $(".owl-team").owlCarousel({
+                rtl: true,
+                loop: true,
+                dots: true,
+                margin: 25,
+                nav: false,
+                navText: ['<i class="fa fa-long-arrow-right"></i>', '<i class="fa fa-long-arrow-left"></i>'],
+                responsive: {
+                    0: { items: 1, nav: false, },
+                    480: { items: 2, nav: false, },
+                    768: { items: 3, nav: false, },
+                    1000: { items: 4, nav: false, }
+                }
+            });
+
+
+        });
+
+    </script>
+    <!-- Default Statcounter code for Amtarsvg.com
+    http://amtarsvg.com/ -->
+    <script type="text/javascript">
+var sc_project=12223126;
+var sc_invisible=0;
+var sc_security="007b2c17";
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript>
+       
+    </noscript>
+    <!-- End of Statcounter Code -->
+
+    <style>
+        #sc_counter_content{
+            display:none;
+        }
+    </style>
+</body>
+
+</html>

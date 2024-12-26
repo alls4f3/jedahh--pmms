@@ -1,0 +1,23 @@
+﻿.main-header .logo i {
+    background: url(/content/brand/tbar4.png)no-repeat center center !important;
+    background-size: contain !important;
+    width: 56px !important;
+   
+}
+.bndname:after {
+    content: "PS projects";
+	font-size: 27px !important;
+ 
+}
+
+.brand1 {
+    display: none !important;
+}
+
+
+.skin-blue .main-header .logo {
+    background-color: #3F51B5 !important;}
+
+
+.skin-blue .main-header .navbar {
+    background-color: #3F51B5 !important}

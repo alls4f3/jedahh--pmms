@@ -1,0 +1,1038 @@
+﻿
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Special Treatment";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+    <div class="">
+        @Html.AntiForgeryToken()
+
+        <div class="grid-title"><div class="title-text">Special Treatment Costs</div></div>
+        <div class="">
+
+            <div class="col-md-6 row" style="display:none">
+                <label style="margin-right:5px;">Contractor</label>
+                <select class="form-control form-control-sm" id="ContID" name="Listt"></select>
+
+            </div>
+
+            <div class="col-md-6 row" style=" padding-top: 25px; padding-left: 21px; margin-bottom: 25px; ">
+
+
+                <input style="margin-left:5px;" type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+
+
+            </div>
+
+        </div>
+
+
+
+        <div style="font-size:x-small;" class="">
+
+
+
+
+            <table class=" table table-bordered" style="width:100%; ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center" colspan="6">Pavement Special Treatments</th>
+                        <th class="text-center" colspan="3">Sidewalk/Median Special Treatments</th>
+                    </tr>
+                </thead>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#Item</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>#Item</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>#Item</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">1</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id1type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval1type1"  name="Cost1" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">2</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id2type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval2type1"  name="Cost2" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">1</h6>
+                        </th>
+                        <td class="table-danger">
+                            <div class="">
+                                <input id="id1type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust2">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval1type2"  name="Cost1S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">3</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id3type1" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval3type1"  name="Cost3" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">4</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id4type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval4type1"  name="Cost4" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">2</h6>
+                        </th>
+                        <td class="table-danger">
+                            <div class="">
+                                <input id="id2type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust2">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval2type2"  name="Cost1" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">5</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id5type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval5type1"  name="Cost5" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">6</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id6type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval6type1"  name="Cost6" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">3</h6>
+                        </th>
+                        <td class="table-danger">
+                            <div class="">
+                                <input id="id3type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust2">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval3type2"   name="Cost3S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">7</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id7type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval7type1"   name="Cost7" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">8</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id8type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval8type1"  name="Cost8" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">4</h6>
+                        </th>
+                        <td class="table-danger">
+                            <div class="">
+                                <input id="id4type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust2">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval4type2"   name="Cost4S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">9</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id9type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval9type1"  name="Cost9" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">10</h6>
+                        </th>
+                        <td class="table-warning">
+                            <div class="">
+                                <input id="id10type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt valcust">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval10type1"  name="Cost10" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">5</h6>
+                        </th>
+                        <td class="table-danger">
+                            <div class="">
+                                <input id="id5type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt valcust2">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval5type2"  name="Cost5S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <th scope="row">
+                            <h6>11</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id11type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval11type1"  name="Cost11" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">12</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id12type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval12type1"  name="Cost12" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">6</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id6type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval6type2"  name="Cost6S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">13</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id13type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval13type1"  name="Cost13" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">14</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id14type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval14type1"   name="Cost14" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">7</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id7type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval7type2"  name="Cost7S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="auto-style1">
+                            <h6 style="">15</h6>
+                        </th>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="id15type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="inpval15type1"  name="Cost15" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row" class="auto-style1">
+                            <h6 style="">16</h6>
+                        </th>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="id16type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="inpval16type1"  name="Cost16" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row" class="auto-style1">
+                            <h6 style="">8</h6>
+                        </th>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="id8type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td class="auto-style1">
+                            <div class="">
+                                <input id="inpval8type2"  name="Cost8S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">17</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id17type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval17type1"  name="Cost17" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">18</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id18type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval18type1"  name="Cost18" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">9</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id9type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval9type2"  name="Cost9S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">19</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id19type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval19type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">20</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id20type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval20type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">10</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id10type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval10type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">21</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id21type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval21type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">22</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id22type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval22type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">11</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id11type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval11type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">23</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id23type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval23type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">24</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id24type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval24type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">12</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id12type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval12type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">25</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id25type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval25type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">26</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id26type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval26type1"   name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">13</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id13type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval13type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">27</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id27type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval27type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">28</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id28type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval28type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">14</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id14type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval14type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">29</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id29type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval29type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">30</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id30type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval30type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">15</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id15type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval15type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">31</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id31type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval31type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">32</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id32type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval32type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">16</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id16type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval16type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">33</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id33type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval33type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">34</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id34type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval34type1"  name="Cost20" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">17</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id17type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval17type2"  name="Cost10S" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr style="">
+                        <th scope="row">
+                            <h6 style="">35</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id35type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval35type1"  name="Cost19" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">36</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id36type1" name="Cost1" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval36type1" name="Cost20"   min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <th scope="row">
+                            <h6 style="">18</h6>
+                        </th>
+                        <td>
+                            <div class="">
+                                <input id="id18type2" name="Cost1" type="text" min="0" step="0.01" class="form-control form-control-sm csttxt">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="inpval18type2" name="Cost10S"  min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getContractor",
+            data: { id: $("#citySelect").val() },
+            success: function (t) {
+                var dropdowncont = $('#ContID');
+
+                dropdowncont.empty();
+
+                dropdowncont.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    dropdowncont.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+
+            }
+        });
+
+
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Parameters/SpecialTreatment/GetData",
+            data: {
+
+                Id: 1,
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                $(".valput").css('border-color', "#d2d6de")
+                var data_p = data.filter(element => element.SP_TYPE == "P")
+                var data_s = data.filter(element => element.SP_TYPE == "S")
+
+                for (var i = 1; i < 37; i++) {
+
+
+                    $("#id" + i + "type1").val(data_p[i - 1].SPECIAL_TREATMENT_DESCRIPTION)
+                    $("#inpval" + i + "type1").val(data_p[i - 1].SPECIAL_TREATMENT_VALUE)
+                }
+
+                for (var i = 1; i < 19; i++) {
+
+
+                    $("#id" + i + "type2").val(data_s[i - 1].SPECIAL_TREATMENT_DESCRIPTION)
+                    $("#inpval" + i + "type2").val(data_s[i - 1].SPECIAL_TREATMENT_VALUE)
+                }
+            }
+        })
+
+
+        $('#ContID').change(function () {
+
+
+            if ($('#ContID').val() != 0) {
+                $.ajax({
+                    beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                        Q.blockUndo();
+                    },
+                    type: "GET",
+                    url: "/Parameters/SpecialTreatment/GetData",
+                    data: {
+
+                        Id: $('#ContID').val(),
+                    },
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $(".valput").css('border-color', "#d2d6de")
+                        var data_p = data.filter(element => element.SP_TYPE == "P")
+                        var data_s = data.filter(element => element.SP_TYPE == "S")
+
+                        for (var i = 1; i < 37; i++) {
+
+
+                            $("#id" + i + "type1").val(data_p[i - 1].SPECIAL_TREATMENT_DESCRIPTION)
+                            $("#inpval" + i + "type1").val(data_p[i - 1].SPECIAL_TREATMENT_VALUE)
+                        }
+
+                        for (var i = 1; i < 19; i++) {
+
+
+                            $("#id" + i + "type2").val(data_s[i - 1].SPECIAL_TREATMENT_DESCRIPTION)
+                            $("#inpval" + i + "type2").val(data_s[i - 1].SPECIAL_TREATMENT_VALUE)
+                        }
+                    }
+                })
+
+            } else {
+                Q.warning("Please select the contractor")
+            }
+        })
+
+    })
+
+    $('#save').click(function () {
+
+        if (1==1) {
+
+            if (valid() == true) {
+
+
+                var list = new Array();
+
+
+                for (var i = 1; i < 37; i++) {
+                    var item = {};
+                    item.SPECIAL_TREATMENT_DESCRIPTION = $("#id" + i + "type1").val();
+                    item.SPECIAL_TREATMENT_NO = i;
+                    item.SPECIAL_TREATMENT_VALUE = $("#inpval" + i + "type1").val();
+                    item.SP_TYPE = "P";
+                    list.push(item);
+                }
+
+                for (var i = 1; i < 19; i++) {
+                    var item = {};
+                    item.SPECIAL_TREATMENT_DESCRIPTION = $("#id" + i + "type2").val();
+                    item.SPECIAL_TREATMENT_VALUE = $("#inpval" + i + "type2").val();
+                    item.SPECIAL_TREATMENT_NO = i;
+                    item.SP_TYPE = "S";
+                    list.push(item);
+
+
+                }
+                // var headers = { __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() };
+                Q.blockUI(null);
+                $.post("/Parameters/SpecialTreatment/SaveData", { ID: 1, itemset: list }, function (result) {
+                    Q.blockUndo();
+
+                    if (result == 'Done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.warning("Message", "Only allowed numbers in Cost value and the Desc Filed should be not empty .!")
+
+
+                    }
+                 
+                });
+
+
+            }
+            else {
+                Q.warning("Invalid Value - All values must Numbers between 1 to 50000!")
+            }
+        }
+        else {
+            Q.warning("Please select the contractor")
+        }
+
+    
+
+    });
+    function valid() {
+        var flag = true;
+        var number = 0;
+
+        $.each($(".valput"), function (key, value) {
+           
+            var itemValues = $(this).val();
+         
+
+            if (itemValues.length > 0) {
+
+
+                if (Number(itemValues) > 0 && Number(itemValues) <= 50000) {
+                  //  flag = true;
+                    $(this).css('border-color', "#d2d6de")
+                }
+                else {
+                    number = number + 1;
+                    $(this).css('border-color', "red")
+                }
+
+               
+
+            }
+        });
+
+        if (number == 0) {
+            flag=true
+        } else {
+            flag=false
+        }
+        return flag;
+    }
+
+</script>
+
+<style>
+    .valput {
+        background-color: #f0f8ff;
+        width: 100px;
+    }
+    .valcust {
+        background-color: #f1eab2;
+    }
+
+    .valcust2 {
+        background-color: #f1beb2;
+    }
+</style>

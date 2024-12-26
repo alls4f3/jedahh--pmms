@@ -1,0 +1,60 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "GIS";
+}
+
+
+
+@if (ViewBag.error == "1")
+{
+    <div>
+        No Connection
+    </div>
+
+}
+else
+{
+    if (ViewBag.IsHTML == ".HTML" || ViewBag.IsHTML == ".html")
+    {
+
+        <div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+            <div class="">
+                <div class="grid-title"><div class="title-text">@ViewBag.pageNameTile       </div></div>
+
+                <div class="col-md-12">
+
+
+
+                    <iframe src="@ViewBag.Output" style=" min-height: 770px; width: 100%; border: none; "></iframe>
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    }
+    else
+    {
+        <iframe src="/Apps/SectionPCI?render=@System.Web.HttpContext.Current.Request.QueryString["render"].ToString()" style=" min-height: 700px; width: 100%; border: none; "></iframe>
+
+
+    }
+
+}
+
+
+
+<style>
+    .content {
+        width: 96%;
+    }
+</style>

@@ -1,0 +1,64 @@
+{
+  "bundle": {
+    "commonSourceDirectory": "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/",
+    "sourceFiles": [
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Integration/ReactDOM.ts",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Integration/Q.React.ts",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Integration/WidgetComponentFactory.ts",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/EditorRefs.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Label.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/ValidationMark.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Field.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/PropertyField.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/CategoryTitle.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/CategoryLineBreak.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/CategoryLink.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/CategoryLinks.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Category.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Categories.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/ValidateForm.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Form.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/PropertyTabs.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/PropertyGrid.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/ButtonPanel.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Toolbar/Toolbar.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Toolbar/CommonButtons.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/FormMode.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/FormDataModel.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/FormDataSource.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/FormView.tsx",
+      "C:/Sandbox/StartSharp/Serenity.Pro/Serenity.Pro.Scripts/UI/Forms/Dialog.tsx"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 71511,
+          "kind": "text"
+        }
+      ]
+    },
+    "dts": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 31,
+          "kind": "type",
+          "data": "react"
+        },
+        {
+          "pos": 33,
+          "end": 76,
+          "kind": "type",
+          "data": "jquery.validation"
+        },
+        {
+          "pos": 78,
+          "end": 18019,
+          "kind": "text"
+        }
+      ]
+    }
+  },
+  "version": "3.4.3"
+}

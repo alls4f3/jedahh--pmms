@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    ViewData["PageId"] = "Login";
+    Layout = MVC.Views.Shared._LayoutSlim;
+}
+
+@section Head {
+    @Html.Script("~/Scripts/vegas/vegas.js")
+   
+    }
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            color: #000;
+            -ms-overflow-style: scrollbar;
+            background-color: #ffffff;
+            background-image: url(/content/images/bg4.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+          
+        }
+        .page-content {
+            height: 2000px;
+            position: fixed;
+        }
+
+        #LoginPanel {
+            padding: 30px 20px;
+            width: 550px;
+            margin: 90px auto auto auto;
+            /*background: rgba(69, 71, 72, 0.25);*/
+            border-radius: 12px;
+            font-weight: 700;
+            background-color:white;
+        }
+
+        #LoginPanel .caption {
+            width: 180px;
+        }
+
+            #LoginPanel .logo {
+                /*margin: 0 auto 20px auto;
+                width: 247px;
+                height: 127px;
+                background: url(/Content/images/AmanahLogos.png);
+                background-size: cover;*/
+                margin: 0 auto 20px auto;
+                width: 280px;
+                height: 123px;
+                background: url(/Content/images/rassef2.png);
+                background-size: cover
+            }
+
+            #LoginPanel h3 {
+                font-size: 18px;
+                font-weight: 700;
+                margin: 16px 0 24px;
+                color: black;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+       #LoginPanel .buttons {
+            text-align: right;
+            padding: 8px 0 4px 0;
+            margin-right: 28px;
+        }
+
+            #LoginPanel .btn {
+                background-color: #2196F3;
+                border: none !important;
+                padding: 8px 24px;
+                font-weight: 700;
+            
+        }
+
+       #LoginPanel .caption {
+            color: #ececec;
+            font-weight: 700;
+            
+        }
+
+       #LoginPanel .actions {
+            padding-right: 28px;
+        }
+
+        #LoginPanel .actions a {
+            color: black;
+            padding: 2px 2px 2px 2px;
+            margin-top: 5px;
+            display: block;
+            float: right;
+            clear: both;
+            border-bottom: 1px dashed #999;
+          
+        }
+
+        #LoginPanel .actions a i {
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        #LoginPanel .s-Form label.error {
+            background-image: url(/Content/serenity/images/cross.png);
+            padding: 26px 0 0 22px;
+        }
+
+        #LoginPanel .s-Form label.error.checked {
+            background-image: none;
+        }
+
+        #LoginPanel .s-Form .field {
+            padding: 8px;
+        }
+
+            #LoginPanel .s-Form input {
+                padding: 6px 10px;
+                border: none;
+                background: transparent;
+                color: black;
+                border: solid 1px #d6d6d66e;
+            }
+
+        #LoginPanel .s-Form .caption {
+            padding: 6px 10px;
+            color: black;
+        }
+
+        #LoginPanel a {
+            color: aqua;
+        }
+
+        #LoginPanel .s-PropertyGrid .categories {
+            height: auto;
+        }
+
+        #LoginPanel .flex-layout .s-PropertyGrid {
+            display: block;
+        }
+
+        @@media(max-width: 550px), (max-height: 500px) {
+            #LoginPanel {
+                padding: 16px 4px 16px 4px;
+                position: absolute;
+                margin: 0;
+                width: auto;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+        }
+        #LoginPanel {
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            width: 554px;
+            background-color: white;
+            padding: 16px 4px 16px 4px;
+            position: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            /*margin-right: 400px;*/
+        }
+    </style>
+}
+<img class="wave" src="/content/images/wave.png" style="
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;display:none
+">
+
+
+<div class="page-content">
+    <video autoplay="" muted="false" loop="loop" playsinline="" id="hail_video_slide" __idm_id__="25296897" style=" object-fit: cover; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; ">
+    <source src="~/Content/vd/df1.mp4" type="video/mp4">
+</video>
+
+
+    <div id="LoginPanel">
+        <div class="flex-layout">
+            <div class="logo"></div>
+            <h3>@Texts.Forms.Membership.Login.FormTitle</h3>
+         
+                <div class="s-Form">
+                    <div class="fieldset ui-widget ui-widget-content ui-corner-all">
+                        <div id="~_PropertyGrid"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="buttons" style="text-align:center">
+                        <button id="LoginButton" type="submit" class="btn btn-primary">
+                           تسجيل الدخول عبر النفاذ الوطنى
+                        </button>
+                    </div>
+                    <div class="actions" style="text-align:center">
+                        <a href="@Url.Content("~/account/Signout")"><i class="fa fa-angle-right"></i>الخروج من الخدمة</a>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+           
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#LoginButton').click(function () {
+            window.location = "/SiteSSOLogin";
+        });
+    })
+
+   
+
+</script>

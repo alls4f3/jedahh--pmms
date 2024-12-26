@@ -1,0 +1,178 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Safety Condition";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+    <div class="">
+
+
+        <div class="grid-title"><div class="title-text">Safety Condition Index</div></div>
+
+        <div class="">
+
+            <table class=" table table-bordered" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th>Description</th>
+                        <th>Index</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <strong style="">1</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Level 1</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="Level1" value="@Model[0].Text" name="Level1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <strong style="">2</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Level 2</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="Level2" value="@Model[1].Text" name="Level2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">3</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Level 3</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="Level3" value="@Model[2].Text" name="Level3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">4</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Level 4</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="Level4" value="@Model[3].Text" name="Level4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $('#save').click(function () {
+
+        if (valid() == true) {
+
+
+
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                    Q.blockUndo();
+                },
+                type: "GET",
+                url: "/Parameters/SafetyCondition/SaveData",
+                data: {
+                    m1: $('#Level1').val(),
+                    m2: $('#Level2').val(),
+                    m3: $('#Level3').val(),
+                    m4: $('#Level4').val(),
+
+
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == 'done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.notifySuccess("Message", "Error!")
+
+
+                    }
+                }
+            })
+        }
+        else {
+            Q.warning("Invalid Value - All values must be between 0 to 100 !")
+        }
+
+    });
+    function valid() {
+        var flag = false;
+        if (Number($('#Level1').val()) > 0 && Number($('#Level1').val()) <= 100) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+        if (Number($('#Level2').val()) > 0 && Number($('#Level2').val()) <= 100 && flag != false) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+
+        if (Number($('#Level3').val()) > 0 && Number($('#Level3').val()) <= 100 && flag != false) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+
+        if (Number($('#Level4').val()) > 0 && Number($('#Level4').val()) <= 100 && flag != false) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+
+
+        return flag;
+    }
+
+</script>

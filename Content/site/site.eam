@@ -1,0 +1,82 @@
+﻿@import "site.mixins.less";
+
+
+.s-EAM-AssetCategoryDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetClassDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetDimansionDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetServiceStatusDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetsMaintCondationDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetsMaintCritDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetsMaintSubSetDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetStatusDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetSubCategoryDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetTypeDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetLocationDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetAttrDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetDistressDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetTagsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-EAM-AssetCustAttrDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}

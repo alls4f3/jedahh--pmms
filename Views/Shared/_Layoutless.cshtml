@@ -1,0 +1,50 @@
+﻿@using FastReport.Web;
+@using System.Web.Optimization
+
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="@UICulture" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="@UICulture" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    @{Html.RenderPartial(MVC.Views.Shared._LayoutHead);}
+
+    <title>@(ViewData["Title"]) - PMMS</title>
+
+   
+</head>
+<body>
+    <div id="page-outer-nonav">
+        <div id="page-container" class="page-container-common">
+            @RenderBody()
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <!--Render the gauge item. Add these scripts only if your report contains the gauge report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-base.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-data.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-pdf-export.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-svg-base.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-circulargauge.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-lineargauge.min.js")
+    <!--Renders the map item. Add this script only if your report contains the map report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-maps.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/bold.reports.common.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/bold.reports.widgets.min.js")
+    <!--Renders the chart item. Add this script only if your report contains the chart report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej.chart.min.js")
+    <!-- Report Viewer component script-->
+    @Scripts.Render("~/Scripts/bold-reports/bold.report-viewer.min.js")
+    @RenderSection("scripts", required: false)
+
+    @Html.Bold().ScriptManager()
+
+
+
+
+</body>
+</html>

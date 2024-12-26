@@ -1,0 +1,50 @@
+﻿.main-sidebar{
+    display:none;
+}
+
+.content-wrapper, .right-side, .main-footer{
+    margin-left:0px
+}
+
+
+
+
+.h-menu {
+    width: 600px;
+    float: left;
+    text-align: left;
+    display: block;
+    height: 49px;
+    list-style: none inside none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle{
+    display:none
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #49484c !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #49484c !important;
+}
+
+.main-footer{
+display:none
+}
+
+body {
+    background-color: #ecf0f5;
+}
+.navbar-nav{
+    display:none !important
+}
+
+[data-role="dropdown"]:not(.open), [data-role="dropdown"]:not(.keep-open) {
+   
+    width: 230px;
+}

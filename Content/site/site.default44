@@ -1,0 +1,112 @@
+﻿@import "site.mixins.less";
+
+
+.s-Default-ContractorsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-CityDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ZonesDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ZoneDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-AreasDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-RoadsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-SectionsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-DirectionDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-FeaturesDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-WorkOrderDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-WorkOrderBugDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-WorkOrderFixDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ProjectsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-FixListDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-BugsListDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ImportWizerdDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ImportWizerdDataDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-ImportTypeDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-SectionDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-AssetAttrDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-AssetDistressDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+.s-Default-AssetTagsDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}

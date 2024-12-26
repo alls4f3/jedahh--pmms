@@ -1,0 +1,103 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Business Intelligence" + " - " +ViewBag.pageNameTile;
+
+}
+@*<link href="~/Content/site/site.css" rel="stylesheet" />
+
+
+    <link href="~/Content/serenity/serenity.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/geo/leaflet.css" />
+    <script src="~/Content/geo/leaflet.js"></script>
+    <script src="~/Content/geo/L.KML.js"></script>*@
+
+
+@*<link href="~/Content/BI/Tele/shared/styles/examples-offline.css" rel="stylesheet">*@
+<link href="~/Content/BI/Tele/styles/kendo.common.min.css" rel="stylesheet">
+<link href="~/Content/BI/Tele/styles/kendo.rtl.min.css" rel="stylesheet">
+<link href="~/Content/BI/Tele/styles/kendo.default.min.css" rel="stylesheet">
+<link href="~/Content/BI/Tele//styles/kendo.default.mobile.min.css" rel="stylesheet">
+
+<script src="~/Content/BI/Tele/js/jszip.min.js"></script>
+<script src="~/Content/BI/Tele/js/kendo.all.min.js"></script>
+<script src="~/Content/BI/Tele/shared/js/console.js"></script>
+
+
+<style>
+    html,
+    body,
+    #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #mainDiv {
+        position: sticky;
+        z-index: 70;
+        top: 0px;
+        left: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 10px 0px 0px 10px;
+        height: 100%;
+        width: 300px;
+        background: #332b7b0f;
+        color: white;
+        font-size: 14px;
+        line-height: 30px;
+        overflow: auto;
+    }
+
+        #mainDiv span {
+            color: #f2f2f2;
+            font-weight: bold;
+        }
+</style>
+
+
+
+
+
+<section class="content" style="min-height: 520.094px;">
+    @if (ViewBag.error == "0")
+    {
+        <div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+            <div class="">
+                <div class="grid-title"><div class="title-text">@ViewBag.pageNameTile       </div></div>
+
+                <div class="col-md-12">
+                    @*<div id="viewDiv" style="  min-height: 800px;  min-width: 900px;"></div>*@
+
+
+                    @Html.Raw(ViewBag.PageAfterCotent)
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    }
+    else
+    {
+
+        <div>No connection found</div>
+
+
+    }
+
+
+</section>
+
+
+

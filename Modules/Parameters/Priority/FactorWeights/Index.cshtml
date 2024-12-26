@@ -1,0 +1,266 @@
+﻿@model   List<PMMS.Northwind.ItemSelect>
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Factor Weights";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+    <div class="">
+
+
+        <div class="grid-title"><div class="title-text">Maintenance Priority Factor Weights</div></div>
+
+        <div class="">
+
+            <table class=" table table-bordered" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Factor</th>
+                        <th>Description</th>
+                        <th>Weight</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <strong style="">1</strong>
+                        </th>
+                        <td>
+                            <h6 style="">PC (Pavemet condatian)</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS1" value="@Model[0].Text" name="Road" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <strong style="">2</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Road safety( FN ) </h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS2" value="@Model[1].Text" name="Pavement" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">3</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Operating Traffic</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS3" value="@Model[2].Text" name="Operating" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">4</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Driving Quality (IRI)</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS4" value="@Model[3].Text" name="Riding" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">5</strong>
+                        </th>
+                        <td>
+                            <h6 style="">940 Call</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS5" value="@Model[4].Text" name="Safety" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">6</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Maintenance Cost</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS6" value="@Model[5].Text" name="Maintenance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">7</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Importance to Community</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS7" value="@Model[6].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">8</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Emegancy Diging </h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS8" value="@Model[7].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">9</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Sight distortion</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS9" value="@Model[8].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">10</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Infrastructure</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS10" value="@Model[9].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">11</strong>
+                        </th>
+                        <td>
+                            <h6 style="">Locatian</h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS11" value="@Model[10].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">
+                            <strong style="">12</strong>
+                        </th>
+                        <td>
+                            <h6 style="">
+                               Sub Road Class
+                            </h6>
+                        </td>
+                        <td>
+                            <div class="col-sm-12">
+                                <input id="InpMS12" value="@Model[11].Text" name="Importance" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <strong>Total = 1.00</strong>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+   $('#save').click(function () {
+
+       if (Number($('#InpMS1').val()) + Number($('#InpMS2').val()) + Number($('#InpMS3').val()) + Number($('#InpMS4').val()) + Number($('#InpMS5').val()) + Number($('#InpMS6').val()) + Number($('#InpMS7').val()) + Number($('#InpMS8').val()) + Number($('#InpMS9').val()) + Number($('#InpMS10').val()) + Number($('#InpMS11').val()) + Number($('#InpMS12').val()) == 1) {
+
+      
+
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                    Q.blockUndo();
+                },
+                type: "GET",
+                url: "/Parameters/FactorWeights/SaveData",
+                data: {
+                    m1: $('#InpMS1').val(),
+                    m2: $('#InpMS2').val(),
+                    m3: $('#InpMS3').val(),
+                    m4: $('#InpMS4').val(),
+                    m5: $('#InpMS5').val(),
+                    m6: $('#InpMS6').val(),
+                    m7: $('#InpMS7').val(),
+                    m8: $('#InpMS8').val(),
+                    m9: $('#InpMS9').val(),
+                    m10: $('#InpMS10').val(),
+                    m11: $('#InpMS11').val(),
+                    m12: $('#InpMS12').val(),
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == 'done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.notifySuccess("Message", "Error!")
+
+                       
+                    }
+                }
+            })
+       } else {
+           Q.warning("Invalid Entries - sum of all entries should be 1", "Can not Save this values !")
+       }
+
+        });
+</script>

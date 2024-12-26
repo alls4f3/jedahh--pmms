@@ -1,0 +1,345 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Computations";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+    <div class="">
+        <div class="grid-title"><div class="title-text"> @LocalText.Get("Computations.Title")</div></div>
+
+
+
+
+
+
+
+
+    
+
+
+        <div class="sidebar-submenu col-md-2">
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.City")</label>
+                <select class="form-control form-control-sm" id="citySelect" style="margin-bottom:4pt;">
+                  
+                </select>
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.Zone")</label>
+                <select id="zoneSelect"  class="form-control form-control-sm" style="margin-bottom:4pt;">
+                    
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.Area")</label>
+                <select id="area"  class="form-control form-control-sm" style="margin-bottom:4pt;">
+                   
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">  @LocalText.Get("Computations.Contractor")</label>
+                <select class="form-control form-control-sm" id="ContID"  style="margin-bottom:4pt;">
+                
+                </select>
+            </div>
+
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.Year")</label>
+                <select class="form-control form-control-sm" id="ddlYear" style="margin-bottom:4pt;">
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.Month")</label>
+                <select class="form-control form-control-sm" id="ddlMonth" name="ContID"  style="margin-bottom:4pt;">
+                    <option value="1">12</option>
+                    <option value="2">11</option>
+                    <option value="4">10</option>
+                    <option value="4">09</option>
+                    <option value="4">08</option>
+                    <option value="4">07</option>
+                    <option value="4">06</option>
+                    <option value="4">05</option>
+                    <option value="4">04</option>
+                    <option value="4">03</option>
+                    <option value="4">02</option>
+                    <option value="4">01</option>
+                </select>
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=""> @LocalText.Get("Computations.Title")</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" onclick="runcomp('comp2')"  class="btn btn-success btn-sm" value="PCI">
+                </div>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('comp3')" class="btn btn-success btn-sm" value="Maintenance Cost">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('comp4')" class="btn btn-success btn-sm" value="Maintenance Priority">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('comp5')" class="btn btn-success btn-sm" value="Survey Planning">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('comp1')" class="btn btn-success btn-sm" value="Budget Planning ">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('type1')" class="btn btn-success btn-sm" value="All Computations">
+                </div>
+            </div>
+
+            @*<div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Check Results</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"  style="" onclick="runcomp('type1')" href="#" class="btn btn-success btn-sm" value="PCI">
+                </div>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   onclick="runcomp('type1')" class="btn btn-success btn-sm" value="Cost"  >
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('type1')" class="btn btn-success btn-sm" value="Priority">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('type1')" class="btn btn-success btn-sm" value="Survey Pl">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"   style="" href="#" onclick="runcomp('type1')" class="btn btn-success btn-sm" value="Budget Pl">
+                </div>
+
+
+            </div>*@
+
+        </div>
+
+
+        <div style="font-size:smaller;" class="text-center col-md-10">
+
+           
+        </div>
+
+
+    </div>
+
+    @*<input type="text" hidden="" id="CID" name="CID" value="1">*@
+
+</div>
+
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .btn-success {
+        width: 215px;
+    }
+</style>
+
+<script>
+
+    function runcomp(type) {
+        var cont ="";
+        var zone= $("#zoneSelect").val();
+        var area= $("#area").val();
+        var City = $("#citySelect").val();
+        console.log(zone);
+
+        if ( zone == "" || zone == null || zone == "0" || area == "" || area == null || area == "0" || City == "" || City == null || City == "0") {
+
+            Q.warning("please  City , Zone and area!");
+        } else {
+            getresult(type);
+
+        }
+    }
+
+    function getresult(type) {
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Apps/Computations/Run",
+            //string Type, string contractor_no, string zone, string area, string City, int Prediction_Year1, int Prediction_Month1
+            data: {
+                Type:type,
+                contractor_no: $("#ContID").val(),
+                zone: $("#zoneSelect").val(),
+                area: $("#area").val(),
+                City: $("#citySelect").val(),
+                Prediction_Year1: $("#ddlYear").val(),
+                Prediction_Month1: $("#ddlMonth").val(),
+              
+
+            },
+            success: function (t) {
+               
+
+                Q.warning(t, "Done")
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+      
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getContractor",
+            data: { id: $("#citySelect").val() },
+            success: function (t) {
+                var dropdowncont = $('#ContID');
+
+                dropdowncont.empty();
+
+                dropdowncont.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    dropdowncont.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+                dropdowncont.prop('selectedIndex', 0);
+
+             
+            }
+        });
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getcity",
+            data: {
+                //  OID: orderid,
+
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var dropdown = $('#citySelect');
+                var dropdownzone = $('#zoneSelect');
+                var dropdownarea = $('#area');
+
+                dropdown.empty();
+                dropdownzone.empty();
+                dropdownarea.empty();
+
+
+                dropdown.append('<option selected="true" disabled>Please Select City</option>');
+                dropdown.prop('selectedIndex', 0);
+
+
+                $.each(result, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+
+
+                $("#citySelect").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getZone",
+                        data: { id: $("#citySelect").val() },
+                        success: function (t) {
+
+
+                            dropdownzone.empty();
+                            dropdownarea.empty();
+                            dropdownzone.append('<option selected="true" disabled>Please Select  Zone</option>');
+
+
+                            $.each(t, function (key, entry) {
+                                dropdownzone.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+                            dropdownzone.prop('selectedIndex', 0);
+                          
+                        }
+                    });
+
+                })
+
+
+
+                $("#zoneSelect").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getAreas",
+                        data: { id: $("#zoneSelect").val(), id2: $("#citySelect").val() },
+                        success: function (x) {
+                            dropdownarea.empty();
+                            dropdownarea.append('<option selected="true" disabled>Select Area</option>');
+                            dropdownarea.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropdownarea.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+                          
+                            dropdownarea.prop('selectedIndex', 0);
+                        }
+                    });
+
+                })
+
+
+              
+
+
+
+                $("#area").change(function () {
+
+                })
+
+            },
+            error: function (response) {
+
+                console.log(response);
+            }
+        });
+
+
+
+    })
+</script>

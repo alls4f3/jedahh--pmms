@@ -1,0 +1,530 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Forecast";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+
+    <div class="">
+
+
+
+        <div class="grid-title"><div class="title-text">Forecast &amp; Budget Planning</div></div>
+        <div class="">
+            <table class=" table table-bordered text-center" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="4">Budget Planning Matrix</th>
+                        <th colspan="4">PCI-Range </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="2">Treatment</th>
+                        <th rowspan="2">Cost (SR)</th>
+                        <th colspan="2">Main</th>
+                        <th colspan="2">Local</th>
+                        <th colspan="2">Utility</th>
+                    </tr>
+                    <tr>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id46" name="TR6L">
+                                <option value="Do Nothing" @(Model[46].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[46].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[46].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[46].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[46].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[46].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id0" value="@Model[0].Text" name="Cost1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id6" value="@Model[6].Text" name="MainMin1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id7" value="@Model[7].Text" name="MainMax1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id18" value="@Model[18].Text" name="LocalMin1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id19" value="@Model[19].Text" name="LocalMax1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id30" value="@Model[30].Text" name="UtilMin1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id31" value="@Model[31].Text" name="UtilMax1" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id47" name="TR6L">
+                                <option value="Do Nothing" @(Model[47].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[47].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[47].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[47].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[47].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[47].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id1" value="@Model[1].Text" name="Cost2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id8" value="@Model[8].Text" name="MainMin2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id9" value="@Model[9].Text" name="MainMax2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id20" value="@Model[20].Text" name="LocalMin2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id21" value="@Model[21].Text" name="LocalMax2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id32" value="@Model[32].Text" name="UtilMin2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id33" value="@Model[33].Text" name="UtilMax2" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id44" name="TR6L">
+                                <option value="Do Nothing" @(Model[44].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[44].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[44].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[44].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[44].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[44].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id2" value="@Model[2].Text" name="Cost3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id10" value="@Model[10].Text" name="MainMin3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id11" value="@Model[11].Text" name="MainMax3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id22" value="@Model[22].Text" name="LocalMin3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id23" value="@Model[23].Text" name="LocalMax3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id34" value="@Model[34].Text" name="UtilMin3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id35" value="@Model[35].Text" name="UtilMax3" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id43" name="TR6L">
+                                <option value="Do Nothing" @(Model[43].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[43].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[43].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[43].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[43].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[43].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id3" value="@Model[3].Text" name="Cost4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id12" value="@Model[12].Text" name="MainMin4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id13" value="@Model[13].Text" name="MainMax4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id24" value="@Model[24].Text" name="LocalMin4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id25" value="@Model[25].Text" name="LocalMax4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id36" value="@Model[36].Text" name="UtilMin4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id37" value="@Model[37].Text" name="UtilMax4" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id45" name="TR6L">
+                                <option value="Do Nothing" @(Model[45].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[45].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[45].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[45].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[45].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[45].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id4" value="@Model[4].Text" name="Cost5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id14" value="@Model[14].Text" name="MainMin5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id15" value="@Model[15].Text" name="MainMax5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id26" value="@Model[26].Text" name="LocalMin5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id27" value="@Model[27].Text" name="LocalMax5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id38" value="@Model[38].Text" name="UtilMin5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id39" value="@Model[39].Text" name="UtilMax5" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="form-control form-control-sm" id="id42" name="TR6L">
+                                <option value="Do Nothing"  @(Model[42].Text == "Do Nothing" ? "selected" : String.Empty)>1 Do Nothing</option>
+                                <option value="Routine Maintenance" @(Model[42].Text == "Routine Maintenance" ? "selected" : String.Empty)>2 Routine Maintenance</option>
+                                <option value="Overlay" @(Model[42].Text == "Overlay" ? "selected" : String.Empty)>3 Overlay</option>
+                                <option value="Mill & Repave" @(Model[42].Text == "Mill & Repave" ? "selected" : String.Empty)> 4 Mill &amp; Repave</option>
+                                <option value="Replace Asphalt" @(Model[42].Text == "Replace Asphalt" ? "selected" : String.Empty)>5 Replace Asphalt</option>
+                                <option value="Reconstruction" @(Model[42].Text == "Reconstruction" ? "selected" : String.Empty)>6 Reconstruction</option>
+                            </select>
+                        </td>
+                        <th>
+                            <div class="">
+                                <input id="id5" value="@Model[5].Text" name="Cost6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id16" value="@Model[16].Text" name="MainMin6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id17" value="@Model[17].Text" name="MainMax6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id28" value="@Model[28].Text" name="LocalMin6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id29" value="@Model[29].Text" name="LocalMax6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id40" value="@Model[40].Text" name="UtilMin6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                        <th>
+                            <div class="">
+                                <input id="id41" value="@Model[41].Text" name="UtilMax6" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th rowspan="3">
+                            Regression Constants
+                        </th>
+                        <th>
+                            a
+                        </th>
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id48" value="@Model[48].Text" name="MainRegA" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id51" value="@Model[51].Text" name="LocalRegA" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id54" value="@Model[54].Text" name="UtilityRegA" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+
+                        <th>
+                            b
+                        </th>
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id49" value="@Model[49].Text" name="MainRegB" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id52" value="@Model[52].Text" name="LocalRegB" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id55" value="@Model[55].Text" name="UtilityRegB" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+
+                        <th>
+                            c
+                        </th>
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id50" value="@Model[50].Text" name="MainRegC" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id53" value="@Model[53].Text" name="LocalRegC" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                        <th colspan="2">
+                            <div class="">
+                                <input id="id56" value="@Model[56].Text" name="UtilityRegC" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </th>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#save').click(function () {
+
+        if (valid() == true) {
+
+            
+           
+
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                    Q.blockUndo();
+                },
+                type: "GET",
+                url: "/Parameters/Forecast/SaveData",
+                data: {
+                    m0: $('#id0').val(),
+                    m1: $('#id1').val(),
+                    m2: $('#id2').val(),
+                    m3: $('#id3').val(),
+                    m4: $('#id4').val(),
+                    m5: $('#id5').val(),
+                    m6: $('#id6').val(),
+                    m7: $('#id7').val(),
+                    m8: $('#id8').val(),
+                    m9: $('#id9').val(),
+                    m10: $('#id10').val(),
+                    m11: $('#id11').val(),
+                    m12: $('#id12').val(),
+                    m13: $('#id13').val(),
+                    m14: $('#id14').val(),
+                    m15: $('#id15').val(),
+                    m16: $('#id16').val(),
+                    m17: $('#id17').val(),
+                    m18: $('#id18').val(),
+                    m19: $('#id19').val(),
+                    m20: $('#id20').val(),
+                    m21: $('#id21').val(),
+                    m22: $('#id22').val(),
+                    m23: $('#id23').val(),
+                    m24: $('#id24').val(),
+                    m25: $('#id25').val(),
+                    m26: $('#id26').val(),
+                    m27: $('#id27').val(),
+                    m28: $('#id28').val(),
+                    m29: $('#id29').val(),
+                    m30: $('#id30').val(),
+                    m31: $('#id31').val(),
+                    m32: $('#id32').val(),
+                    m33: $('#id33').val(),
+                    m34: $('#id34').val(),
+                    m35: $('#id35').val(),
+                    m36: $('#id36').val(),
+                    m37: $('#id37').val(),
+                    m38: $('#id38').val(),
+                    m39: $('#id39').val(),
+                    m40: $('#id40').val(),
+                    m41: $('#id41').val(),
+                    m42: $('#id42').val(),
+                    m43: $('#id43').val(),
+                    m44: $('#id44').val(),
+                    m45: $('#id45').val(),
+                    m46: $('#id46').val(),
+                    m47: $('#id47').val(),
+                    m48: $('#id48').val(),
+                    m49: $('#id49').val(),
+                    m50: $('#id50').val(),
+                    m51: $('#id51').val(),
+                    m52: $('#id52').val(),
+                    m53: $('#id53').val(),
+                    m54: $('#id54').val(),
+                    m55: $('#id55').val(),
+                    m56: $('#id56').val(),
+                                     
+
+
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == 'done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.notifySuccess("Message", "Error!")
+
+
+                    }
+                }
+            })
+        }
+        else {
+            Q.warning("Invalid Value - All values must Numbers !")
+        }
+
+    });
+    function valid() {
+        var flag = false;
+        for (i = 0; i < 56; i++) {
+            if (i != 46 && i != 47 && i != 44 && i != 43 && i != 45 && i != 42) {
+
+                if (isNaN($("#id" + i).val()) || $("#id" + i).val()=="") {
+                    $("#id" + i).css('border-color', "red")
+                    flag = false;
+                    break;
+                } else {
+
+                    flag = true;
+                    $("#id" + i).css('border-color', "#d2d6de")
+
+                }
+            }
+
+           
+            
+           
+        }
+        return flag;
+    }
+
+</script>

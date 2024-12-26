@@ -1,0 +1,430 @@
+﻿@using FastReport.Web;
+
+@{
+////ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+ ViewData["Title"] = "Reports";
+
+//FastReport.Web.WebReport webReport = new FastReport.Web.WebReport();
+////webReport.ToolbarIconsStyle = FastReport.Web.ToolbarIconsStyle.Black;
+////webReport.ToolbarBackgroundStyle = FastReport.Web.ToolbarBackgroundStyle.None;
+////webReport.ToolbarStyle = FastReport.Web.ToolbarStyle.Large;
+////webReport.ToolbarColor = System.Drawing.Color.White;
+////webReport.BorderWidth = 1;
+////webReport.BorderColor = System.Drawing.Color.Black;
+////webReport.ShowZoomButton = false;
+////webReport.ShowExports = false;
+////webReport.PrintInBrowser = false;
+//webReport.Width = 900;
+//webReport.CssClass = "csrt";
+
+
+
+//webReport.Report.Load(Server.MapPath("~/App_Data/Prepared.frx"));
+}
+
+@section Head {
+
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+    @WebReportGlobals.ScriptsWOjQuery()
+    @WebReportGlobals.Styles()
+
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+    <div class="">
+        <div class="grid-title"><div class="title-text">Reports</div></div>
+
+
+
+
+
+
+
+
+
+
+        <div class="sidebar-submenu col-md-2">
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">City</label>
+                <select class="form-control form-control-sm" id="citySelect" name="CityID" style="margin-bottom:4pt;">
+                    <option value="0">Please Select City</option>
+
+                </select>
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Zone</label>
+                <select id="zoneSelect" name="ZoneID" class="form-control form-control-sm" style="margin-bottom:4pt;"></select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Area</label>
+                <select id="area" name="AreaID" class="form-control form-control-sm" style="margin-bottom:4pt;"></select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Contractor</label>
+                <select class="form-control form-control-sm" id="ContID" name="ContID" style="margin-bottom:4pt;"></select>
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Section Report</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <a style="" onclick="getreport('SecRpt1')" href="#" class="btn btn-success btn-sm">Pavement Section</a>
+                </div>
+                @*<div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <a style="" onclick="getreport('SecRpt21')" href="#" class="btn btn-success btn-sm">Sidewalk &amp; Median Section</a>
+            </div>*@
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Distress &amp; Condition Report</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <a style="" onclick="getreport('SecRpt3')" href="#" class="btn btn-success btn-sm">Pavement Section</a>
+                </div>
+                @*<div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <a style="" onclick="getreport('SecRpt4')" href="#" class="btn btn-success btn-sm">Sidewalk &amp; Median Section</a>
+            </div>*@
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">M&amp;R Cost Report</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <a style="" onclick="getreport('Secrpt5All')" href="#" class="btn btn-success btn-sm">Pavement Section</a>
+                </div>
+                @*<div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <a style="" href="#" onclick="getreport('SecRpt6')" class="btn btn-success btn-sm">Sidewalk &amp; Median Section</a>
+            </div>*@
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Area-wise Condition Report</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    @*InvRpt1*@
+                    <a style="" onclick="getreport('SecRpt8')" href="#" class="btn btn-success btn-sm">Pavement Section</a>
+                </div>
+                @*<div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <a style="" href="#" onclick="getreport('SecRpt9')" class="btn btn-success btn-sm">Sidewalk &amp; Median Section</a>
+            </div>*@
+            </div>
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+
+
+
+                <label style="">More Reports</label>
+
+                @using (Html.BeginForm("ListDistress", "sysapi"))
+                {
+                    <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                        <input type="submit" value="Export All PCI" title="Export An Excel File" class="btn btn-success btn-sm" />
+                    </div>
+                }
+
+                @using (Html.BeginForm("ListMR", "sysapi"))
+                {
+                    <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                        <input type="submit" value="Export All SectionMR" title="Export An Excel File" class="btn btn-success btn-sm" />
+                    </div>
+                }
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <a style="" onclick="getreport('SecRpt7')" href="#" class="btn btn-success btn-sm">Survey &amp; Budget Planning</a>
+                </div>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <a style="" onclick="getreport('DistressAnalys')" href="#" class="btn btn-success btn-sm">Run Distress &amp; Treatment Analysis</a>
+                </div>
+            </div>
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Check Computations Results</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" style="" onclick="runcomp('InvRpt0F')" href="#" class="btn btn-success btn-sm" value="PCI">
+                </div>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" onclick="runcomp('InvRpt3F')" class="btn btn-success btn-sm" value="Cost">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" style="" href="#" onclick="runcomp('PctRpt1F')" class="btn btn-success btn-sm" value="Priority">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" style="" href="#" onclick="runcomp('SrvRpt1F')" class="btn btn-success btn-sm" value="Survey Pl">
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" style="" href="#" onclick="runcomp('BdpRpt12F')" class="btn btn-success btn-sm" value="Budget Pl">
+                </div>
+
+
+            </div>
+
+
+
+          
+        </div>
+
+
+        <div style="font-size:smaller;" class="text-center col-md-10">
+
+            @ViewBag.WebReport.GetHtml()
+
+
+        </div>
+
+
+    </div>
+
+    @*<input type="text" hidden="" id="CID" name="CID" value="1">*@
+
+</div>
+
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    .btn-success {
+        width: 215px;
+    }
+    .csrt {
+        height: 1220px !important;
+        width: 850px !important;
+    }
+
+    .aincrt {
+      
+        float: left;
+        margin-left: 100px;
+        border: solid 1px #ececeb;
+    }
+</style>
+
+<script>
+
+
+
+    function getreport(type) {
+       
+       
+        location.href = "/Apps/Reports?type=" + type + "&Area=" + $('#area').val() + "&City=" + $('#citySelect').val() + "&Zone=" + $('#zoneSelect').val() + "&Contractor=" + $('#ContID').val()  ;
+
+    }
+
+    function runcomp(type) {
+
+
+        location.href = "/Apps/Reports?type=" + type + "&Area=" + $('#area').val() + "&City=" + $('#citySelect').val() + "&Zone=" + $('#zoneSelect').val() + "&Contractor=" + $('#ContID').val();
+
+    }
+
+    function runCustom() {
+
+       
+
+    }
+
+    $(document).ready(function () {
+
+        function checkqueryString(name) {
+
+            var field = name;
+            var url = window.location.href;
+            if (url.indexOf('?' + field + '=') != -1)
+                return true;
+            else if (url.indexOf('&' + field + '=') != -1)
+                return true;
+            return false
+        }
+        
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getContractor",
+            data: { id: $("#citySelect").val() },
+            success: function (t) {
+                var dropdowncont = $('#ContID');
+
+                dropdowncont.empty();
+             
+                dropdowncont.append('<option selected="true" disabled>Please Select</option>');
+              
+               
+
+                $.each(t, function (key, entry) {
+                    dropdowncont.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+                if (checkqueryString('Contractor') == true) {
+                    dropdowncont.val(getUrlParameter('Contractor'));
+
+                } else {
+                    dropdowncont.prop('selectedIndex', 0);
+                }
+            }
+        });
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/GetCustomReports",
+            data: {},
+            success: function (t) {
+                var drpCustomReport = $('#drpCustomReport');
+
+                drpCustomReport.empty();
+
+                drpCustomReport.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    drpCustomReport.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+                if (checkqueryString('render') == true) {
+                    drpCustomReport.val(getUrlParameter('render'));
+
+                } else {
+                    drpCustomReport.prop('selectedIndex', 0);
+                }
+            }
+        });
+
+
+            $.ajax({
+                type: "GET",
+                url: "/sysapi/getcity",
+                data: {
+                    //  OID: orderid,
+
+
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    var dropdown = $('#citySelect');
+                    var dropdownzone = $('#zoneSelect');
+                    var dropdownarea = $('#area');
+
+                    dropdown.empty();
+                    dropdownzone.empty();
+                    dropdownarea.empty();
+
+
+                    dropdown.append('<option selected="true" disabled>Please Select City</option>');
+                    dropdown.prop('selectedIndex', 0);
+
+
+                    $.each(result, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                    })
+
+                  
+
+
+                    $("#citySelect").change(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/sysapi/getZone",
+                            data: { id: $("#citySelect").val() },
+                            success: function (t) {
+
+
+                                dropdownzone.empty();
+                                dropdownarea.empty();
+                                dropdownzone.append('<option selected="true" disabled>Please Select  Zone</option>');
+                              
+
+                                $.each(t, function (key, entry) {
+                                    dropdownzone.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                                })
+
+
+                                if (checkqueryString('Zone') == true) {
+                                    if (getUrlParameter('Zone') != 'null')
+                                        dropdownzone.val(getUrlParameter('Zone'));
+
+                                    $("#zoneSelect").trigger('change');
+
+
+                                } else {
+                                    dropdownzone.prop('selectedIndex', 0);
+                                }
+                            }
+                        });
+
+                    })
+
+                 
+
+                    $("#zoneSelect").change(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/sysapi/getAreas",
+                            data: { id: $("#zoneSelect").val(), id2: $("#citySelect").val() },
+                            success: function (x) {
+                                dropdownarea.empty();
+                                dropdownarea.append('<option selected="true" disabled>Select Area</option>');
+                                dropdownarea.prop('selectedIndex', 0);
+
+
+
+
+
+                                $.each(x, function (key, entry) {
+                                    dropdownarea.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                                })
+
+                                if (checkqueryString('Area') == true) {
+                                    if (getUrlParameter('Area') != 'null')
+                                        dropdownarea.val(getUrlParameter('Area'));
+
+
+                                } else {
+                                    dropdownarea.prop('selectedIndex', 0);
+                                }
+                              
+                            }
+                        });
+
+                    })
+
+
+                    if (checkqueryString('City') == true) {
+                        if (getUrlParameter('City') != 'null')
+                            dropdown.val(getUrlParameter('City'));
+                            $("#citySelect").trigger('change')
+                    }
+
+                  
+
+
+                    $("#area").change(function () {
+
+                    })
+
+                },
+                error: function (response) {
+
+                    console.log(response);
+                }
+            });
+
+   
+
+    })
+
+</script>

@@ -1,0 +1,225 @@
+﻿@{
+    ViewData["Title"] = "Business Intelligence Center";
+    Layout = "~/Views/Shared/_Layoutless.cshtml";
+
+}
+
+
+
+
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+    @WebReportGlobals.ScriptsWOjQuery()
+    @WebReportGlobals.Styles()
+
+
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+    <div class="">
+        <div class="grid-title"><div class="title-text">Reports</div></div>
+
+
+
+
+        <div class="sidebar-submenu col-md-2">
+
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style="">Custom Reports</label>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <select style="width:210px;height:30px;margin-bottom:5px" id="drpCustomReport">
+                        <option disabled>Select Report</option>
+
+                    </select>
+                </div>
+
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button" style="" href="#" onclick="runCustom()" class="btn btn-success btn-sm" value="Run">
+                </div>
+
+
+            </div>
+
+          
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <label style="">Excel Reports</label>
+
+                    <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                        <select name="ReportId" style="width:210px;height:30px;margin-bottom:5px" id="drpCustomReportExcel">
+                            <option disabled>Select Report</option>
+
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                        <input type="button" style="" href="#" onclick="runCustomTemp()"  class="btn btn-success btn-sm" value="Export">
+                    </div>
+
+
+                </div>
+            
+
+        </div>
+
+
+        <div style="font-size:smaller;height:800px;width:80%" class="text-center col-md-10">
+
+            @(Html.Bold().ReportViewer("viewer")
+    .ReportServiceUrl("/api/Values")
+
+        .ReportPath("~/App_Data/upload/Reports/" + ViewBag.Report + ".rdl")
+
+)
+
+
+
+        </div>
+
+
+    </div>
+
+    @*<input type="text" hidden="" id="CID" name="CID" value="1">*@
+
+</div>
+
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    .btn-success {
+        width: 215px;
+    }
+
+    .csrt {
+        height: 1220px !important;
+        width: 850px !important;
+    }
+
+    .aincrt {
+        float: left;
+        margin-left: 100px;
+        border: solid 1px #ececeb;
+    }
+</style>
+
+<script>
+
+   
+    // runCustomTemp
+
+    function runCustomTemp() {
+
+        if ($('#drpCustomReportExcel').val() == null || $('#drpCustomReportExcel').val() == "") {
+            Q.warning("please select your report !")
+
+        } else {
+       
+
+            window.open("sysapi/ExportReports?ReportId=" + $('#drpCustomReportExcel').val(), '_blank').focus();
+
+        }
+   
+
+
+
+    }
+    function runCustom() {
+
+        if ($('#drpCustomReport').val() == null || $('#drpCustomReport').val() == "") {
+            Q.warning("please select your report !")
+
+        } else {
+           parent.location.href = "/ReportsCenter?Report=" + $('#drpCustomReport').val();
+
+        }
+
+    }
+
+    $(document).ready(function () {
+
+        function checkqueryString(name) {
+
+            var field = name;
+            var url = window.parent.location.href;
+            if (url.indexOf('?' + field + '=') != -1)
+                return true;
+            else if (url.indexOf('&' + field + '=') != -1)
+                return true;
+            return false
+        }
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(parent.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/GetCustomReports",
+            data: {},
+            success: function (t) {
+                var drpCustomReport = $('#drpCustomReport');
+
+                drpCustomReport.empty();
+
+                drpCustomReport.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    drpCustomReport.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+                if (checkqueryString('Report') == true) {
+                    drpCustomReport.val(getUrlParameter('Report'));
+
+                } else {
+                    drpCustomReport.prop('selectedIndex', 0);
+                }
+            }
+        });
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/GetCustomReportsExcel",
+            data: {},
+            success: function (t) {
+                var drpCustomReport = $('#drpCustomReportExcel');
+
+                drpCustomReport.empty();
+
+                drpCustomReport.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    drpCustomReport.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+               
+            }
+        });
+
+
+
+
+    })
+
+</script>

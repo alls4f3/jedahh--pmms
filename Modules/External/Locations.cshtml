@@ -1,0 +1,188 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutExternal.cshtml";
+
+}
+
+<header id="header">
+    <div class="top-bar">
+        <!--   <div class="srch">
+        <button><i class="fa fa-search"></i></button>
+        <input type="text" />
+    </div>-->
+        <!-- <div class=" country"> <a href="#"><span class="caret"></span> English </a>
+    <img src="~/Content/external/images/en-flag.PNG" alt=""> </div>-->
+        <ul class="top-lnks">
+            <li>
+                <a href="/Account/Login"> <i class="fa fa-lock"></i><span> تسجيل الدخول </span></a>
+            </li>
+            <li>
+                <a href="/Account/SignUp"> <i class="fa fa-user"></i> <span> سجل الآن </span></a>
+            </li>
+
+        </ul>
+
+        <ul class="top-lnks" style="float:left">
+
+            <li>
+                <span style="color:white">عدد الزوار</span>
+
+                <img class="statcounter"
+                     src="https://c.statcounter.com/12223126/0/007b2c17/0/"
+                     alt="web stats" style=" max-width: inherit; /* max-height: 10px; */ min-height: inherit; padding-right: 10px; ">
+            </li>
+
+
+        </ul>
+        <!-- <div class="welcom-Usr"><span>مرحبا بالزائر الكريم :</span><h2> محمد على محمود</h2></div> -->
+        <div class="clearfix"> </div>
+    </div>
+    <div class="scnd-bar" data-spy="affix" data-offset-top="42">
+        <a class="logo" href="/"><img src="~/Content/external/images/AmtarF.jpg" alt="" /></a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <i class="fa fa-list"></i> </a>
+        <nav class="navbar">
+            <div class="collapse navbar-collapse pn" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"><i class="fa fa-home"></i> الرئيسية</a></li>
+                    <li> <a href="/about">  عن أمتار</a> </li>
+                    <li><a href="howto"> كيف تستفيد عبر أمتار  <span class="other-lang"></span></a></li>
+                    <li class="active"><a href="Locations"> الموقع والمكان  </a></li>
+                    <li><a href="contact-us"> اتصل بنا </a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="clearfix"> </div>
+    </div>
+</header>
+<!-- Slider -->
+<div class="flat-sliders-container">
+    <div class="tp-banner-container">
+        @*style="height:300px"*@
+        <div class="tp-banner">
+            <ul>
+                <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
+                    <img src="~/Content/external/images/Location.jpg" alt="slider-image" />
+                    <div class="tp-caption sfr description-slider style1" data-x="center" data-y="center" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut"><span class="other-lang">موقـع أمتــار</span>  </div>
+
+                    @*<div class="tp-caption sfl title-slide style6" data-x="center" data-y="90" data-speed="1500" top="40px" data-start="1500" data-easing="Sine.easeInOut">   موقـع أمتــار </div>*@
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@*<div class="inner-hdr" style="background-image:url(~/Content/external/images/Location.jpg)">
+    <!--small-banner-->
+    <div class="small-banner">
+        <div class="container">
+            <!--title-->
+            <div class="title">
+                <h3> موقـع أمتــار    </h3>
+            </div>
+            <!--End title-->
+
+            <ol class="breadcrumb">
+                <li><a href="index.html"></a></li>
+                <li class="active">
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!--End small-banner-->
+
+</div>*@
+
+<div class="inner-wrapper">
+
+
+
+    <div class="home_banner_wrapper mtn">
+        <div class="container">
+            <div class="title-wrapper mb40">
+                <span class=" title">
+                    <h3> الموقع والمكان    <span></span></h3>
+                    <span class="line">
+                        <span class="box"><i></i></span>
+                    </span>
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="home_banner_inner">
+                    <!-- <div class="home_banner_content">-->
+
+                    <div class="row">
+                        <div class="center col-sm-1">
+
+                        </div>
+                        <div class="center col-sm-10" style="text-align:center" >
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.1707340620123!2d49.594990215383646!3d25.39909492971178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e379688542a04eb%3A0xfa2ef95885228b8!2z2KPZhdiq2KfYsSDZhNmE2YXYs9in2K3YqSDZiNin2YTYqtiu2LfZiti3!5e0!3m2!1sen!2ssa!4v1580322981650!5m2!1sen!2ssa" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        </div>
+                        <div class="center col-sm-1">
+
+                        </div> 
+
+
+
+
+                    </div>
+                    <!--  </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<style>
+element.style {
+ top:auto;
+}
+       a.logo img {
+        width: auto;
+        height: auto;
+        position: relative;
+        z-index: 5;
+    }
+    .logo {
+        position: absolute;
+        float: right;
+        z-index: 100;
+        width: 134px;
+        top: 48px;
+        right: 90px;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    .flat-sliders-container {
+        position: relative;
+        padding-top: 100px;
+
+    }
+.tp-caption.description-slider {
+    /* margin-left: 76px!important; */
+    font-size: 35px!important;
+    text-align: center;
+    color: #cce6ff;
+background:none;
+    top: 50%;
+min-width:465px;
+}
+.tp-caption.description-slider span {
+    color: #0073e6;
+font-size: 42px;
+font-family: inherit;
+}
+    img {
+        max-width: 250px;
+        height: auto;
+        min-height: 147px;
+    }
+</style>
+
+
+
+
+
+
+
+

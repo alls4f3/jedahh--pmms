@@ -1,0 +1,207 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Equipment";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+
+    <div class="">
+
+
+
+        <div class="grid-title"><div class="title-text">Equipment Survey</div></div>
+        <div class="">
+
+            <table class=" table table-bordered" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Description</th>
+                        <th>Value</th>
+                        <th>Recommended M&amp;R</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">Maximum Deflection &lt; </h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                               
+                                <input id="MD" value="@Model[0].Text" name="MD" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                                <h6 style="">Micron</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm" id="MDMRL" name="MDMRL" >
+                                <option value="1" @(Model[3].Text == "1" ? "selected" : String.Empty) >1</option>
+                                <option value="2" @(Model[3].Text == "2" ? "selected" : String.Empty)   >2</option>
+                                <option value="3" @(Model[3].Text == "3" ? "selected" : String.Empty) >3</option>
+                                <option value="4" @(Model[3].Text == "4" ? "selected" : String.Empty) >4</option>
+                                <option value="5" @(Model[3].Text == "5" ? "selected" : String.Empty) >5</option>
+                                <option value="6" @(Model[3].Text == "6" ? "selected" : String.Empty) >6</option>
+                                <option value="7" @(Model[3].Text == "7" ? "selected" : String.Empty) >7</option>
+                                <option value="8" @(Model[3].Text == "8" ? "selected" : String.Empty) >8</option>
+                                <option value="9" @(Model[3].Text == "9" ? "selected" : String.Empty) >9</option>
+                                <option value="10" @(Model[3].Text == "10" ? "selected" : String.Empty) >10</option>
+                                <option value="11" @(Model[3].Text == "11" ? "selected" : String.Empty) >11</option>
+                                <option value="12" @(Model[3].Text == "12" ? "selected" : String.Empty) >12</option>
+                                <option value="13" @(Model[3].Text == "13" ? "selected" : String.Empty) >13</option>
+                                <option value="14" @(Model[3].Text == "14" ? "selected" : String.Empty) >14</option>
+                                <option value="15" @(Model[3].Text == "15" ? "selected" : String.Empty) >15</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">Maximum Roghness &lt; </h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MR" value="@Model[1].Text" name="MR" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                                <h6 style="">cm/km</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm" id="MRMRL" name="MRMRL">
+                                <option value="1" @(Model[4].Text == "1" ? "selected" : String.Empty)>1</option>
+                                <option value="2" @(Model[4].Text == "2" ? "selected" : String.Empty)>2</option>
+                                <option value="3" @(Model[4].Text == "3" ? "selected" : String.Empty)>3</option>
+                                <option value="4" @(Model[4].Text == "4" ? "selected" : String.Empty)>4</option>
+                                <option value="5" @(Model[4].Text == "5" ? "selected" : String.Empty)>5</option>
+                                <option value="6" @(Model[4].Text == "6" ? "selected" : String.Empty)>6</option>
+                                <option value="7" @(Model[4].Text == "7" ? "selected" : String.Empty)>7</option>
+                                <option value="8" @(Model[4].Text == "8" ? "selected" : String.Empty)>8</option>
+                                <option value="9" @(Model[4].Text == "9" ? "selected" : String.Empty)>9</option>
+                                <option value="10" @(Model[4].Text == "10" ? "selected" : String.Empty)>10</option>
+                                <option value="11" @(Model[4].Text == "11" ? "selected" : String.Empty)>11</option>
+                                <option value="12" @(Model[4].Text == "12" ? "selected" : String.Empty)>12</option>
+                                <option value="13" @(Model[4].Text == "13" ? "selected" : String.Empty)>13</option>
+                                <option value="14" @(Model[4].Text == "14" ? "selected" : String.Empty)>14</option>
+                                <option value="15" @(Model[4].Text == "15" ? "selected" : String.Empty)>15</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="">Minimum Skid Resistance Number &gt; </h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MS" value="@Model[2].Text" name="MS" type="number" min="0" step="0.001" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm" id="MSMRL" name="MSMRL">
+                                <option value="1" @(Model[5].Text == "1" ? "selected" : String.Empty)>1</option>
+                                <option value="2" @(Model[5].Text == "2" ? "selected" : String.Empty)>2</option>
+                                <option value="3" @(Model[5].Text == "3" ? "selected" : String.Empty)>3</option>
+                                <option value="4" @(Model[5].Text == "4" ? "selected" : String.Empty)>4</option>
+                                <option value="5" @(Model[5].Text == "5" ? "selected" : String.Empty)>5</option>
+                                <option value="6" @(Model[5].Text == "6" ? "selected" : String.Empty)>6</option>
+                                <option value="7" @(Model[5].Text == "7" ? "selected" : String.Empty)>7</option>
+                                <option value="8" @(Model[5].Text == "8" ? "selected" : String.Empty)>8</option>
+                                <option value="9" @(Model[5].Text == "9" ? "selected" : String.Empty)>9</option>
+                                <option value="10" @(Model[5].Text == "10" ? "selected" : String.Empty)>10</option>
+                                <option value="11" @(Model[5].Text == "11" ? "selected" : String.Empty)>11</option>
+                                <option value="12" @(Model[5].Text == "12" ? "selected" : String.Empty)>12</option>
+                                <option value="13" @(Model[5].Text == "13" ? "selected" : String.Empty)>13</option>
+                                <option value="14" @(Model[5].Text == "14" ? "selected" : String.Empty)>14</option>
+                                <option value="15" @(Model[5].Text == "15" ? "selected" : String.Empty)>15</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#save').click(function () {
+
+        if (valid() == true) {
+
+
+
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                    Q.blockUndo();
+                },
+                type: "GET",
+                url: "/Parameters/Equipment/SaveData",
+                data: {
+                    m1: $('#MD').val(),
+                    m2: $('#MR').val(),
+                    m3: $('#MS').val(),
+                    m4: $('#MDMRL').val(),
+                    m5: $('#MRMRL').val(),
+                    m6: $('#MSMRL').val(),
+
+
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == 'done') {
+                        Q.notifySuccess("data Saved Successfully!", "Message")
+                    }
+                    else {
+                        Q.notifySuccess("Message", "Error!")
+
+
+                    }
+                }
+            })
+        }
+        else {
+            Q.warning("Invalid Value - All values must be between 0 to 1000 !")
+        }
+
+    });
+    function valid() {
+        var flag = false;
+        if (Number($('#MD').val()) > 0 && Number($('#MD').val()) <= 1000) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+        if (Number($('#MR').val()) > 0 && Number($('#MR').val()) <= 1000 && flag != false) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+
+        if (Number($('#MS').val()) > 0 && Number($('#MS').val()) <= 1000 && flag != false) {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+
+
+
+        return flag;
+    }
+
+</script>

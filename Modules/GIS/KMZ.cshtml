@@ -1,0 +1,115 @@
+﻿@model  List<PMMS.Northwind.ItemSelect>
+
+
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "GIS - Section PCI";
+    Layout = null;
+}
+<link href="~/Content/site/site.css" rel="stylesheet" />
+
+
+<link href="~/Content/serenity/serenity.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/geo/leaflet.css" />
+<script src="~/Content/geo/leaflet.js"></script>
+<!-- Leaflet-KMZ -->
+<script src="~/Content/geo/leaflet-kmz.js"></script>
+
+<style>
+    html,
+    body,
+    #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    #mainDiv {
+        position: sticky;
+        z-index: 70;
+        top: 0px;
+        left: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        padding: 10px 0px 0px 10px;
+        height: 100%;
+        width: 300px;
+        background: #332b7b0f;
+        color: white;
+        font-size: 14px;
+        line-height: 30px;
+        overflow: auto;
+    }
+
+        #mainDiv span {
+            color: #f2f2f2;
+            font-weight: bold;
+        }
+</style>
+
+
+
+
+
+<section class="content" style="min-height: 520.094px;">
+    @if (ViewBag.error == "0")
+    {
+        <div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+            <div class="">
+                <div class="grid-title"><div class="title-text">@ViewBag.pageNameTile     </div></div>
+
+                <div class="col-md-12">
+                    @*<div id="viewDiv" style="  min-height: 800px;  min-width: 900px;"></div>*@
+
+                    <div style="width: 100vw; height: 100vh" id="mapkml"></div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    }
+    else
+    {
+
+        <div>No connection found</div>
+
+
+    }
+
+
+</section>
+
+
+
+<script type="text/javascript">
+    var map = L.map('mapkml', {
+        preferCanvas: true // recommended when loading large layers.
+    });
+    map.setView(new L.LatLng(21.4858, 39.1925 ), 10);
+
+    var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png');
+    OpenTopoMap.addTo(map);
+
+    // Instantiate KMZ layer (async)
+    var kmz = L.kmzLayer().addTo(map);
+
+    kmz.on('load', function (e) {
+        control.addOverlay(e.layer, "KMZ Layer");
+        // e.layer.addTo(map);
+    });
+
+    // Add remote KMZ files as layers (NB if they are 3rd-party servers, they MUST have CORS enabled)
+    kmz.load('@Html.Raw(ViewBag.Output)');
+
+
+    var control = L.control.layers(null, null, { collapsed: false }).addTo(map);
+
+
+
+
+</script>

@@ -1,0 +1,2211 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Maintenance Cost ";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+   
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+    <div class="">
+        <div class="grid-title"><div class="title-text">Maintenance &amp; Repair Cost Matrix</div></div>
+
+        <div class="sidebar-submenu col-md-2" style="display:none">
+            <div style="margin-bottom:8pt">
+                <label style="">Contractor</label>
+                <select id="ContID" name="ContID"  class="form-control form-control-sm" style="margin-bottom:8pt;"></select>
+
+            </div>
+
+            <div style="margin-bottom:8pt">
+                <label style="">City</label>
+                <select class="form-control form-control-sm" id="CityID" name="CityID"  style="margin-bottom:8pt;">
+                    <option value="0">Please Select City</option>
+
+                </select>
+                <input type="button" onclick="AssignCity()" class="btn btn-success btn-sm" value="Assign">
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style="">Zone</label>
+                <select id="ZoneID" name="ZoneID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select City First</option>
+                </select>
+                <input  type="button" onclick="AssignZone()"  class="btn btn-success btn-sm" value="Assign">
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style="">Area</label>
+                <select id="AreaID" name="AreaID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Zone First</option>
+                </select>
+                <input  type="button" onclick="AssignArea()" class="btn btn-success btn-sm" value="Assign">
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style="">Road</label>
+                <select id="RoadID" name="RoadID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Area First</option>
+                </select>
+                <input  type="button" onclick="AssignRoad()" class="btn btn-success btn-sm" value="Assign">
+
+            </div>
+            <div style="margin-bottom:8pt">
+                <label style="">Section</label>
+                <select id="SectionID" name="SectionID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Road First</option>
+                </select>
+                <input  type="button" onclick="AssignSection()" class="btn btn-success btn-sm" value="Assign">
+            </div>
+
+            <div style="margin-bottom:8pt">
+                <label style="">Direction</label>
+                <select id="DirectionID" name="DirectionID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Section First</option>
+                </select>
+                <input  type="button" onclick="AssignDirection()"  class="btn btn-success btn-sm" value="Assign">
+
+            </div>
+
+            <div style="margin-bottom:8pt">
+                <label style="">Feature</label>
+                <select id="FeatureID" name="FeatureID"  class="form-control form-control-sm" style="margin-bottom:8pt;">
+                    <option>Select Section First</option>
+                </select>
+                <input  type="button" onclick="AssignFeature()"  class="btn btn-success btn-sm" value="Assign">
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div style="font-size:smaller;" class="text-center col-md-12">
+
+            <table class=" table table-bordered" style="width:100%;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="auto-style2">M/R Type</th>
+                        <th class="auto-style2">Pavement Repair</th>
+                        <th colspan="2" class="auto-style2">Cost</th>
+                        <th scope="col" class="auto-style2">M/R Type</th>
+                        <th class="auto-style2">Pavement Repair</th>
+                        <th colspan="2" class="auto-style2">Cost</th>
+                        <th scope="col" class="auto-style2">M/R Type</th>
+                        <th class="auto-style2">Median/Sidewalk Repair</th>
+                        <th colspan="2" class="auto-style2">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong style="">1</strong>
+                        </td>
+                        <td>
+                            <label style="">Do Nothing</label>
+                        </td>
+                        <td colspan="2">
+                            <div class="">
+                                <input id="0" name="1" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+                        <td>
+                            <strong style="">8</strong>
+                        </td>
+                        <td>
+                            <label style="">Hot Sand Mix</label>
+                        </td>
+                        <td>
+                            <label style="">a. Main Road</label>
+                        </td>
+                        <td>
+                            <input id="17" name="22" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">1</strong>
+                        </td>
+                        <td>
+                            <label style="">Do Nothing</label>
+                        </td>
+                        <td colspan="2">
+                            <div class="">
+                                <input id="33"  name="2" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong style="">2</strong>
+                        </td>
+                        <td>
+                            <label style="">Apply Hot Sand and Roll</label>
+                        </td>
+                        <td>
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                        </td>
+                        <td>
+                            <input id="1" name="4" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="2"  name="5" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">9</strong>
+                        </td>
+                        <td>
+                            <label style="">Rubberized Friction Course Surfacing</label>
+                        </td>
+                        <td>
+                            <label style="">a. Main Road</label>
+                        </td>
+                        <td>
+                            <input id="18" name="25" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">2</strong>
+                        </td>
+                        <td>
+                            <label style="">Replace Tiles</label>
+                        </td>
+                        <td>
+                            <div class="">
+
+                                <input id="34"  name="46" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="">3</strong>
+                        </td>
+                        <td>
+                            <label style="">Crack Sealing</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+                            <input id="3"  name="7" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="4"  name="8" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="5"  name="9" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">10</strong>
+                        </td>
+                        <td>
+                            <label style="">Overlay</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+                            <input id="19" name="28" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="20" name="29" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="21" name="30" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+
+                        </td>
+                        <td>
+                            <strong style="">3</strong>
+                        </td>
+                        <td>
+                            <label style="">Repair Tiles</label>
+                        </td>
+                        <td>
+                            <div class="">
+
+                                <input id="35"  name="47" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="">4</strong>
+                        </td>
+                        <td>
+                            <label style="">Surface Leveling</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+
+                            <input id="6"  name="10" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="7"  name="11" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="8"  name="12" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">11</strong>
+                        </td>
+                        <td>
+                            <label style="">Overlay + Geotextile Fabric</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+
+                        </td>
+                        <td>
+                            <input id="22" name="31" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="23" name="32" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">4</strong>
+                        </td>
+                        <td>
+                            <label style="">Replace Kerbstone</label>
+                        </td>
+                        <td>
+                            <div class="">
+
+                                <input id="36"  name="48" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="">5</strong>
+                        </td>
+                        <td>
+                            <label style="">Surface Patching</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+
+                            <input id="9"  name="13" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="10"  name="14" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="11" name="15" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">12</strong>
+                        </td>
+                        <td>
+                            <label style="">Mill &amp; Repave</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+
+                        </td>
+                        <td>
+                            <input id="24"  name="34" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="25"  name="35" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">5</strong>
+                        </td>
+                        <td>
+                            <label style="">Repair Kerbstone</label>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="37"  name="49" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="">6</strong>
+                        </td>
+                        <td>
+                            <label style="">Deep Patching</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+                            <input id="12" name="16" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="13"  name="17" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="14"  name="18" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+
+                        </td>
+                        <td>
+                            <strong style="">13</strong>
+                        </td>
+                        <td>
+                            <label style="">Mill + Geotextile fabric + Repave</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+
+                        </td>
+                        <td>
+                            <input id="26" name="37" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">6</strong>
+                        </td>
+                        <td>
+                            <label style="">Paint Kerbstone</label>
+                        </td>
+                        <td>
+                            <div class="">
+                                <input id="38" name="50" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="">7</strong>
+                        </td>
+                        <td>
+                            <label style="">Micro Surfacing</label>
+                        </td>
+                        <td>
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+
+                        </td>
+                        <td>
+                            <input id="15" name="19" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="16" name="20" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">14</strong>
+                        </td>
+                        <td>
+                            <label style="">Replace Asphalt</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+                            <input id="27"  name="40" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="28"  name="41" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="29" name="42" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                        </td>
+                        <td>
+                            <strong style="">7</strong>
+                        </td>
+                        <td>
+                            <label style="">Repair Floor</label>
+                        </td>
+                        <td>
+                            <div class="">
+
+                                <input id="39" name="51" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="4">
+                            <div class="">
+
+                            </div>
+                        </td>
+                        <td>
+                            <strong style="">15</strong>
+                        </td>
+                        <td>
+                            <label style="">Reconstruction</label>
+                        </td>
+                        <td>
+
+                            <label style="">a. Main Road</label>
+                            <label style="">b. Local Road</label>
+                            <label style="">c. Utility Road</label>
+
+                        </td>
+                        <td>
+                            <input id="30" name="43" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="31" name="44" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            <input id="32" name="45" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+
+                        </td>
+                        <td>
+                            <strong style="">8</strong>
+                        </td>
+                        <td>
+                            <label style="">Replace Floor</label>
+                        </td>
+                        <td>
+                            <div class="">
+
+                                <input id="40" value="18.00" name="52" type="number" min="0" step="0.01" class="form-control form-control-sm valput">
+                            </div>
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+
+    @*<input type="text" hidden="" id="CID" name="CID" value="1">*@
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+
+
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Parameters/CostMatrix/GetData",
+            data: {
+
+                Id: 1,
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+
+                //     var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == "1")
+
+                for (var k = 0; k < 41; k++) {
+
+
+                    var Current_MR_Section_No;
+
+
+                    if (k == 0) {
+                        Current_MR_Section_No = "1"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 1) {
+                        Current_MR_Section_No = "4"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 2) {
+                        Current_MR_Section_No = "5"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 3) {
+                        Current_MR_Section_No = "7"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 4) {
+                        Current_MR_Section_No = "8"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 5) {
+                        Current_MR_Section_No = "9"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 6) {
+                        Current_MR_Section_No = "10"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 7) {
+                        Current_MR_Section_No = "11"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 8) {
+                        Current_MR_Section_No = "12"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 9) {
+                        Current_MR_Section_No = "13"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 10) {
+                        Current_MR_Section_No = "14"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+
+                    if (k == 11) {
+                        Current_MR_Section_No = "15"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 12) {
+                        Current_MR_Section_No = "16"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 13) {
+                        Current_MR_Section_No = "17"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 14) {
+                        Current_MR_Section_No = "18"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 15) {
+                        Current_MR_Section_No = "19"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 16) {
+                        Current_MR_Section_No = "20"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 17) {
+                        Current_MR_Section_No = "22"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 18) {
+                        Current_MR_Section_No = "25"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 19) {
+                        Current_MR_Section_No = "28"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 20) {
+                        Current_MR_Section_No = "29"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+
+                    if (k == 21) {
+                        Current_MR_Section_No = "30"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 22) {
+                        Current_MR_Section_No = "31"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 23) {
+                        Current_MR_Section_No = "32"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 24) {
+                        Current_MR_Section_No = "34"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 25) {
+                        Current_MR_Section_No = "35"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 26) {
+                        Current_MR_Section_No = "37"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 27) {
+                        Current_MR_Section_No = "40"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 28) {
+                        Current_MR_Section_No = "41"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 29) {
+                        Current_MR_Section_No = "42"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 30) {
+                        Current_MR_Section_No = "43"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 31) {
+                        Current_MR_Section_No = "44"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+
+                    if (k == 32) {
+                        Current_MR_Section_No = "45"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 33) {
+                        Current_MR_Section_No = "1m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 34) {
+                        Current_MR_Section_No = "2m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 35) {
+                        Current_MR_Section_No = "3m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 36) {
+                        Current_MR_Section_No = "4m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 37) {
+                        Current_MR_Section_No = "5m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 38) {
+                        Current_MR_Section_No = "6m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 39) {
+                        Current_MR_Section_No = "7m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+                    if (k == 40) {
+
+                        Current_MR_Section_No = "8m"
+                        var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                        $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                    }
+
+                    $(".valput").css('border-color', "#d2d6de")
+
+
+
+
+
+                }
+            }
+        })
+
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getContractor",
+            success: function (t) {
+                var dropdowncont = $('#ContID');
+
+                dropdowncont.empty();
+
+                dropdowncont.append('<option selected="true" disabled>Please Select</option>');
+
+
+
+                $.each(t, function (key, entry) {
+                    dropdowncont.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+               
+            }
+        });
+
+        $('#ContID').change(function () {
+
+
+            if ($('#ContID').val() != 0) {
+                $.ajax({
+                    beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                        Q.blockUndo();
+                    },
+                    type: "GET",
+                    url: "/Parameters/CostMatrix/GetData",
+                    data: {
+
+                        Id: $('#ContID').val(),
+                    },
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+
+                        //     var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == "1")
+
+                        for (var k = 0; k < 41; k++) {
+                          
+
+                            var Current_MR_Section_No;
+
+
+                            if (k == 0) {
+                                Current_MR_Section_No = "1"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 1) {
+                                Current_MR_Section_No = "4"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 2) {
+                                Current_MR_Section_No = "5"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 3) {
+                                Current_MR_Section_No = "7"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 4) {
+                                Current_MR_Section_No = "8"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 5) {
+                                Current_MR_Section_No = "9"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 6) {
+                                Current_MR_Section_No = "10"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 7) {
+                                Current_MR_Section_No = "11"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 8) {
+                                Current_MR_Section_No = "12"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 9) {
+                                Current_MR_Section_No = "13"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 10) {
+                                Current_MR_Section_No = "14"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+
+                            if (k == 11) {
+                                Current_MR_Section_No = "15"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 12) {
+                                Current_MR_Section_No = "16"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 13) {
+                                Current_MR_Section_No = "17"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 14) {
+                                Current_MR_Section_No = "18"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 15) {
+                                Current_MR_Section_No = "19"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 16) {
+                                Current_MR_Section_No = "20"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 17) {
+                                Current_MR_Section_No = "22"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 18) {
+                                Current_MR_Section_No = "25"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 19) {
+                                Current_MR_Section_No = "28"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 20) {
+                                Current_MR_Section_No = "29"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+
+                            if (k == 21) {
+                                Current_MR_Section_No = "30"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 22) {
+                                Current_MR_Section_No = "31"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 23) {
+                                Current_MR_Section_No = "32"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 24) {
+                                Current_MR_Section_No = "34"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 25) {
+                                Current_MR_Section_No = "35"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 26) {
+                                Current_MR_Section_No = "37"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 27) {
+                                Current_MR_Section_No = "40"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 28) {
+                                Current_MR_Section_No = "41"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 29) {
+                                Current_MR_Section_No = "42"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 30) {
+                                Current_MR_Section_No = "43"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 31) {
+                                Current_MR_Section_No = "44"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+
+
+                            if (k == 32) {
+                                Current_MR_Section_No = "45"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 33) {
+                                Current_MR_Section_No = "1m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 34) {
+                                Current_MR_Section_No = "2m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 35) {
+                                Current_MR_Section_No = "3m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 36) {
+                                Current_MR_Section_No = "4m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 37) {
+                                Current_MR_Section_No = "5m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 38) {
+                                Current_MR_Section_No = "6m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 39) {
+                                Current_MR_Section_No = "7m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                            if (k == 40) {
+                              
+                                Current_MR_Section_No = "8m"
+                                var data_0 = data.filter(element => element.MAINTENANCE_COST_ID == Current_MR_Section_No);
+                                $("#" + k).val(data_0[0].MAINTENANCE_COST_VALUE);
+                            }
+                      
+                            $(".valput").css('border-color', "#d2d6de")
+                    
+
+                          
+
+
+                        }
+                    }
+                })
+
+            } else {
+                Q.warning("Please select the contractor")
+            }
+        })
+
+
+
+
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getcity",
+            data: {
+                //  OID: orderid,
+
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var dropdown = $('#CityID');
+                var dropdownzone = $('#ZoneID');
+                var dropdownarea = $('#AreaID');
+                var dropRoadID = $('#RoadID');
+                var dropSectionID = $('#SectionID');
+                var dropDirectionID = $('#DirectionID');
+                var dropFeatureID = $('#FeatureID');
+
+                dropdown.empty();
+                dropdownzone.empty();
+                dropdownarea.empty();
+
+                dropRoadID.empty();
+                dropSectionID.empty();
+                dropDirectionID.empty();
+                dropFeatureID.empty();
+
+
+
+                dropdown.append('<option selected="true" disabled>Please Select City</option>');
+                dropdown.prop('selectedIndex', 0);
+
+
+                $.each(result, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+
+
+                $("#CityID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getZone",
+                        data: { id: $("#CityID").val() },
+                        success: function (t) {
+
+
+                            dropdownzone.empty();
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+                            dropSectionID.empty();
+                            dropDirectionID.empty();
+                            dropFeatureID.empty();
+
+                            dropdownzone.append('<option selected="true" disabled>Please Select  Zone</option>');
+                            dropdownzone.prop('selectedIndex', 0);
+
+
+                            $.each(t, function (key, entry) {
+                                dropdownzone.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+                        }
+                    });
+
+                })
+
+
+
+                $("#ZoneID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getAreas",
+                        data: { id: $("#ZoneID").val(), id2: $("#CityID").val() },
+                        success: function (x) {
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+                            dropSectionID.empty();
+                            dropDirectionID.empty();
+                            dropFeatureID.empty();
+
+                            dropdownarea.append('<option selected="true" disabled>Select Area</option>');
+                            dropdownarea.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropdownarea.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+                         
+
+                        }
+                    });
+
+                })
+
+
+                $("#AreaID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getRoad",
+                        data: { id: $("#CityID").val(), id2: $("#ZoneID").val(), id3: $("#AreaID").val()},
+                        success: function (x) {
+                           
+                            dropRoadID.empty();
+                            dropSectionID.empty();
+                            dropDirectionID.empty();
+                            dropFeatureID.empty();
+
+                            dropRoadID.append('<option selected="true" disabled>Select Road</option>');
+                            dropRoadID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropRoadID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+
+
+
+
+                $("#RoadID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getSection",
+                        data: { id: $("#CityID").val(), id2: $("#ZoneID").val(), id3: $("#AreaID").val(), id4: $("#RoadID").val() },
+                        success: function (x) {
+
+                          
+                            dropSectionID.empty();
+                            dropDirectionID.empty();
+                            dropFeatureID.empty();
+
+                            dropSectionID.append('<option selected="true" disabled>Select Section</option>');
+                            dropSectionID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropSectionID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+
+
+                $("#SectionID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getDirection",
+                        data: { },
+                        success: function (x) {
+
+
+                        
+                            dropDirectionID.empty();
+                            dropFeatureID.empty();
+
+                            dropDirectionID.append('<option selected="true" disabled>Select Direction</option>');
+                            dropDirectionID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropDirectionID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+
+
+
+
+                $("#DirectionID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getFeature",
+                        data: {},
+                        success: function (x) {
+
+
+
+                         
+                            dropFeatureID.empty();
+
+                            dropFeatureID.append('<option selected="true" disabled>Select Feature</option>');
+                            dropFeatureID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropFeatureID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+            },
+            error: function (response) {
+
+                console.log(response);
+            }
+        });
+
+    })
+
+
+
+
+
+
+
+    $('#save').click(function () {
+
+        if (1==1) {
+
+            if (valid() == true) {
+
+
+                var list = new Array();
+
+
+
+
+                for (var k = 0; k < 41; k++) {
+
+                    var item = {};       
+               
+
+
+                    if (k == 0) {
+                        item.MAINTENANCE_COST_ID = "1"
+                        item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+         
+                    }
+
+
+                    if (k == 1) {
+                       item.MAINTENANCE_COST_ID  = "4"
+                      item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+
+                    }
+
+
+                    if (k == 2) {
+                       item.MAINTENANCE_COST_ID  = "5"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 3) {
+                       item.MAINTENANCE_COST_ID  = "7"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 4) {
+                       item.MAINTENANCE_COST_ID  = "8"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 5) {
+                       item.MAINTENANCE_COST_ID  = "9"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 6) {
+                       item.MAINTENANCE_COST_ID  = "10"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 7) {
+                       item.MAINTENANCE_COST_ID  = "11"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 8) {
+                       item.MAINTENANCE_COST_ID  = "12"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 9) {
+                       item.MAINTENANCE_COST_ID  = "13"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 10) {
+                       item.MAINTENANCE_COST_ID  = "14"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+
+                    if (k == 11) {
+                       item.MAINTENANCE_COST_ID  = "15"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+                    if (k == 12) {
+                       item.MAINTENANCE_COST_ID  = "16"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 13) {
+                       item.MAINTENANCE_COST_ID  = "17"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 14) {
+                       item.MAINTENANCE_COST_ID  = "18"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 15) {
+                       item.MAINTENANCE_COST_ID  = "19"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 16) {
+                       item.MAINTENANCE_COST_ID  = "20"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 17) {
+                       item.MAINTENANCE_COST_ID  = "22"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 18) {
+                       item.MAINTENANCE_COST_ID  = "25"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 19) {
+                       item.MAINTENANCE_COST_ID  = "28"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 20) {
+                       item.MAINTENANCE_COST_ID  = "29"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+
+                    if (k == 21) {
+                       item.MAINTENANCE_COST_ID  = "30"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+                    if (k == 22) {
+                       item.MAINTENANCE_COST_ID  = "31"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 23) {
+                       item.MAINTENANCE_COST_ID  = "32"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 24) {
+                       item.MAINTENANCE_COST_ID  = "34"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 25) {
+                       item.MAINTENANCE_COST_ID  = "35"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 26) {
+                       item.MAINTENANCE_COST_ID  = "37"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 27) {
+                       item.MAINTENANCE_COST_ID  = "40"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 28) {
+                       item.MAINTENANCE_COST_ID  = "41"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 29) {
+                       item.MAINTENANCE_COST_ID  = "42"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 30) {
+                       item.MAINTENANCE_COST_ID  = "43"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+                    if (k == 31) {
+                       item.MAINTENANCE_COST_ID  = "44"
+                        
+                       item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+
+
+                    if (k == 32) {
+                       item.MAINTENANCE_COST_ID  = "45"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 33) {
+                       item.MAINTENANCE_COST_ID  = "1m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 34) {
+                       item.MAINTENANCE_COST_ID  = "2m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 35) {
+                       item.MAINTENANCE_COST_ID  = "3m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 36) {
+                       item.MAINTENANCE_COST_ID  = "4m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 37) {
+                       item.MAINTENANCE_COST_ID  = "5m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 38) {
+                       item.MAINTENANCE_COST_ID  = "6m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 39) {
+                       item.MAINTENANCE_COST_ID  = "7m"
+                        
+                         item.MAINTENANCE_COST_VALUE = $("#" + k).val();list.push(item);
+                    }
+                    if (k == 40) {
+                       
+                       item.MAINTENANCE_COST_ID  = "8m"
+                        
+                        item.MAINTENANCE_COST_VALUE = $("#" + k).val(); list.push(item);
+
+
+                        Q.blockUI(null);
+                        $.post("/Parameters/CostMatrix/SaveData", { ID: 1, itemset: list }, function (result) {
+                            Q.blockUndo();
+
+                            if (result == 'Done') {
+                                Q.notifySuccess("data Saved Successfully!", "Message")
+                            }
+                            else {
+                                Q.warning("Message", "Only allowed numbers in Cost value and the Desc Filed should be not empty .!")
+
+
+                            }
+
+                        });
+
+                    }
+
+
+                }
+
+
+
+            }
+            else {
+                Q.warning("Invalid Value - All values must Numbers between 1 to 10000!")
+            }
+        }
+        else {
+            Q.warning("Please select the contractor")
+        }
+
+
+
+    });
+    function valid() {
+        var flag = true;
+        var number = 0;
+
+        $.each($(".valput"), function (key, value) {
+
+            var itemValues = $(this).val();
+
+
+            
+
+            if (Number(itemValues) >= 0 && Number(itemValues) <= 10000 && itemValues.length > 0 ) {
+                    //  flag = true;
+                    $(this).css('border-color', "#d2d6de")
+                }
+                else {
+                    number = number + 1;
+                    $(this).css('border-color', "red")
+                }
+
+
+
+         
+        });
+
+        if (number == 0) {
+            flag = true
+        } else {
+            flag = false
+        }
+        return flag;
+    }
+
+    function AssignCity() {
+        if ($("#CityID").val() == 0 || $("#CityID").val() == null || $("#ContID").val() == 0 || $("#ContID").val() == null) {
+            Q.warning( "Please select City and Contractor!");
+        }
+        else {
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected City for the selected Contractor? (Note: All sub Assignments for the selected city will be cleared)",
+                () => {
+                   
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result + result.concat("0", $("#CityID").val());
+                    }
+                    else {
+
+                        result = result + result.concat($("#CityID").val());
+
+
+                    }
+
+                    assginthis(result);
+            
+                   
+                },
+                {
+                    onNo: () => {
+                       
+                    },
+                    onCancel: () => {
+                       
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+           
+        }
+    }
+
+
+
+    function AssignZone() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null) {
+            Q.warning("Please select City, Zone and Contractor!" );
+        }
+        else {
+           
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Zone for the selected Contractor? \r\n (Note: All sub Assignments for the selected Zone will be cleared",
+                () => {
+                
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat( "0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result =result.concat("0",$("#ZoneID").val());
+                    }
+                    else {
+                        result =result.concat($("#ZoneID").val());
+
+                    }
+                    assginthis(result);
+
+                   
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+
+        }
+    }
+
+    function AssignArea() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null
+            || $("#AreaID").val() == 0
+            || $("#AreaID").val() == null) {
+            Q.warning( "Please select City, Zone, Area and Contractor!");
+        }
+        else {
+      
+
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Area for the selected Contractor?(Note: All sub Assignments for the selected Area will be cleared)",
+                () => {
+
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat("0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result = result.concat("0", $("#ZoneID").val());
+                    }
+                    else {
+                        result = result.concat($("#ZoneID").val());
+
+                    }
+
+
+                    if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9 ) {
+                        result = result.concat("00", $("#AreaID").val());
+                    }
+                    else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                        result = result.concat("0", $("#AreaID").val());
+                    }
+                    else {
+                        result = result.concat($("#AreaID").val());
+
+                    }
+
+
+                    assginthis(result);
+
+                  //  Q.notifySuccess(result);
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+        }
+    }
+
+    function AssignRoad() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null
+            || $("#AreaID").val() == 0
+            || $("#AreaID").val() == null
+            || $("#RoadID").val() == 0
+            || $("#RoadID").val() == null) {
+            Q.warning("Please select City, Zone, Area, Road and Contractor!");
+        }
+        else {
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Road for the selected Contractor?(Note: All sub Assignments for the selected Area will be cleared)",
+                () => {
+
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat("0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result = result.concat("0", $("#ZoneID").val());
+                    }
+                    else {
+                        result = result.concat($("#ZoneID").val());
+
+                    }
+
+
+                    if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9) {
+                        result = result.concat("00", $("#AreaID").val());
+                    }
+                    else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                        result = result.concat("0", $("#AreaID").val());
+                    }
+                    else {
+                        result = result.concat($("#AreaID").val());
+
+                    }
+
+
+                    if ($("#RoadID").val() > 0 && $("#RoadID").val() <= 9) {
+                        result = result.concat("00", $("#RoadID").val());
+                    }
+                    else if ($("#RoadID").val() > 9 && $("#RoadID").val() <= 99) {
+                        result = result.concat("0", $("#RoadID").val());
+                    }
+                    else {
+                        result = result.concat($("#RoadID").val());
+
+                    }
+
+
+                    assginthis(result);
+
+                    //  Q.notifySuccess(result);
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+        }
+    }
+
+    function AssignSection() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null
+            || $("#AreaID").val() == 0
+            || $("#AreaID").val() == null
+            || $("#RoadID").val() == 0
+            || $("#RoadID").val() == null
+            || $("#SectionID").val() == 0
+            || $("#SectionID").val() == null) {
+            Q.warning( "Please select City, Zone, Area, Section and Contractor!");
+        }
+        else {
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Section for the selected Contractor?(Note: All sub Assignments for the selected Area will be cleared)",
+                () => {
+
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat("0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result = result.concat("0", $("#ZoneID").val());
+                    }
+                    else {
+                        result = result.concat($("#ZoneID").val());
+
+                    }
+
+
+                    if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9) {
+                        result = result.concat("00", $("#AreaID").val());
+                    }
+                    else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                        result = result.concat("0", $("#AreaID").val());
+                    }
+                    else {
+                        result = result.concat($("#AreaID").val());
+
+                    }
+
+
+                    if ($("#RoadID").val() > 0 && $("#RoadID").val() <= 9) {
+                        result = result.concat("00", $("#RoadID").val());
+                    }
+                    else if ($("#RoadID").val() > 9 && $("#RoadID").val() <= 99) {
+                        result = result.concat("0", $("#RoadID").val());
+                    }
+                    else {
+                        result = result.concat($("#RoadID").val());
+
+                    }
+
+                    if ($("#SectionID").val() > 0 && $("#SectionID").val() <= 9) {
+                        result = result.concat("00", $("#SectionID").val());
+                    }
+                    else if ($("#SectionID").val() > 9 && $("#SectionID").val() <= 99) {
+                        result = result.concat("0", $("#SectionID").val());
+                    }
+                    else {
+                        result = result.concat($("#SectionID").val());
+
+                    }
+
+
+                    assginthis(result);
+
+                    //  Q.notifySuccess(result);
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+
+        }
+    }
+
+    function AssignDirection() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null
+            || $("#AreaID").val() == 0
+            || $("#AreaID").val() == null
+            || $("#RoadID").val() == 0
+            || $("#RoadID").val() == null
+            || $("#SectionID").val() == 0
+            || $("#SectionID").val() == null
+            || $("#DirectionID").val() == 0
+            || $("#DirectionID").val() == null) {
+            Q.warning( "Please select City, Zone, Area, Section, Direction and Contractor!" );
+        }
+        else {
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Direction for the selected Contractor?(Note: All sub Assignments for the selected Area will be cleared)",
+                () => {
+
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat("0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result = result.concat("0", $("#ZoneID").val());
+                    }
+                    else {
+                        result = result.concat($("#ZoneID").val());
+
+                    }
+
+
+                    if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9) {
+                        result = result.concat("00", $("#AreaID").val());
+                    }
+                    else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                        result = result.concat("0", $("#AreaID").val());
+                    }
+                    else {
+                        result = result.concat($("#AreaID").val());
+
+                    }
+
+
+                    if ($("#RoadID").val() > 0 && $("#RoadID").val() <= 9) {
+                        result = result.concat("00", $("#RoadID").val());
+                    }
+                    else if ($("#RoadID").val() > 9 && $("#RoadID").val() <= 99) {
+                        result = result.concat("0", $("#RoadID").val());
+                    }
+                    else {
+                        result = result.concat($("#RoadID").val());
+
+                    }
+
+                    if ($("#SectionID").val() > 0 && $("#SectionID").val() <= 9) {
+                        result = result.concat("00", $("#SectionID").val());
+                    }
+                    else if ($("#SectionID").val() > 9 && $("#SectionID").val() <= 99) {
+                        result = result.concat("0", $("#SectionID").val());
+                    }
+                    else {
+                        result = result.concat($("#SectionID").val());
+
+                    }
+
+
+                 
+                    result = result.concat($("#DirectionID").val());
+                    assginthis(result);
+
+                    //  Q.notifySuccess(result);
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+
+            }
+        }
+    
+
+    function AssignFeature() {
+        if ($("#CityID").val() == 0
+            || $("#CityID").val() == null
+            || $("#ContID").val() == 0
+            || $("#ContID").val() == null
+            || $("#ZoneID").val() == 0
+            || $("#ZoneID").val() == null
+            || $("#AreaID").val() == 0
+            || $("#AreaID").val() == null
+            || $("#RoadID").val() == 0
+            || $("#RoadID").val() == null
+            || $("#SectionID").val() == 0
+            || $("#SectionID").val() == null
+            || $("#DirectionID").val() == 0
+            || $("#DirectionID").val() == null
+            || $("#FeatureID").val() == 0
+            || $("#FeatureID").val() == null) {
+            Q.warning( "Please select City, Zone, Area, Section, Direction, Feature and Contractor!");
+        }
+        else {
+    
+
+            Q.confirm(
+                "Are you sure you want to Assign the whole selected Feature for the selected Contractor?(Note: All sub Assignments for the selected Area will be cleared)",
+                () => {
+
+                    var result = "";
+
+                    if ($("#CityID").val() <= 9) {
+                        result = result.concat("0", $("#CityID").val());
+                    }
+                    else {
+                        result = result.concat($("#CityID").val());
+
+                    }
+
+                    if ($("#ZoneID").val() <= 9) {
+                        result = result.concat("0", $("#ZoneID").val());
+                    }
+                    else {
+                        result = result.concat($("#ZoneID").val());
+
+                    }
+
+
+                    if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9) {
+                        result = result.concat("00", $("#AreaID").val());
+                    }
+                    else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                        result = result.concat("0", $("#AreaID").val());
+                    }
+                    else {
+                        result = result.concat($("#AreaID").val());
+
+                    }
+
+
+                    if ($("#RoadID").val() > 0 && $("#RoadID").val() <= 9) {
+                        result = result.concat("00", $("#RoadID").val());
+                    }
+                    else if ($("#RoadID").val() > 9 && $("#RoadID").val() <= 99) {
+                        result = result.concat("0", $("#RoadID").val());
+                    }
+                    else {
+                        result = result.concat($("#RoadID").val());
+
+                    }
+
+                    if ($("#SectionID").val() > 0 && $("#SectionID").val() <= 9) {
+                        result = result.concat("00", $("#SectionID").val());
+                    }
+                    else if ($("#SectionID").val() > 9 && $("#SectionID").val() <= 99) {
+                        result = result.concat("0", $("#SectionID").val());
+                    }
+                    else {
+                        result = result.concat($("#SectionID").val());
+
+                    }
+
+
+                   
+                    result = result.concat($("#DirectionID").val());
+                    result = result.concat($("#FeatureID").val());
+
+                  
+
+                    assginthis(result);
+
+                    //  Q.notifySuccess(result);
+                },
+                {
+                    onNo: () => {
+
+                    },
+                    onCancel: () => {
+
+                    },
+                    dialogClass: 's-MessageDialog s-WarningDialog'
+                });
+
+
+        }
+    }
+
+
+    function assginthis(result) {
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Parameters/CostMatrix/SaveCostData",
+            data: {
+                m1: $("#ContID").val(),
+                m2: result,
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result == 'done') {
+                    Q.notifySuccess("Selected Locations Assigned to Contractor!", "Message")
+                }
+                else {
+                    Q.notifySuccess("Message", "Error!")
+
+
+                }
+            }
+        })
+    }
+</script>
+
+
+
+<script>
+
+   
+</script>
+
+<style>
+
+    @@media (max-width: 800px) {
+        tr, td, th, thead, tbody, table {
+            display: block;
+        }
+
+        table {
+            display: flex;
+            overflow: hidden;
+        }
+
+        tr {
+            margin: .2em 0;
+        }
+
+        thead {
+           display:none
+
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td:not(:first-child) {
+            border-top: none;
+        }
+    }
+
+  
+</style>

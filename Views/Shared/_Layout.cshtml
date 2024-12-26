@@ -1,0 +1,455 @@
+﻿@using FastReport.Web;
+@using System.Web.Optimization
+
+<!DOCTYPE html>
+@{
+
+    if (Request.Cookies["TFA"] == null)
+    {
+        Response.Redirect("/");
+        return;
+    }
+    else
+    {
+        try
+        {
+            HttpCookie cookie2 = Request.Cookies.Get("TFA");
+
+            FormsAuthenticationTicket ticket2 = FormsAuthentication.Decrypt(cookie2.Value);
+            var st12 = ticket2.UserData.Split(',')[3].ToString();
+            var st22 = ticket2.UserData.Split(',')[1].ToString();
+            var st32 = ticket2.UserData.Split(',')[2].ToString();
+        }
+        catch (Exception)
+        {
+
+            Response.Redirect("/");
+        }
+    }
+
+    HttpCookie cookie = Request.Cookies.Get("TFA");
+
+    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
+    Func<string, IHtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
+    var hideNav = Request["hideNav"] == "1";
+    var logged = Serenity.Authorization.Username;
+    var themeCookie = Request.Cookies["ThemePreference"];
+    var FontPreference = Request.Cookies["FontPreference"];
+
+    var theme = themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
+    var Fonts = FontPreference != null && !FontPreference.Value.IsEmptyOrNull() ? FontPreference.Value : "Default";
+
+
+    var darkSidebar = theme != null && theme.IndexOf("light") < 0;
+    var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
+    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+    var userImage = (user == null || string.IsNullOrEmpty(user.UserImage)) ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURT0oHC0tLTIwLzQzMzo2NDs4Njo6OkQrHUMtIEkuIEYwIkgyI0o0KkI7NkM+O0g/O1M3K1c7KUFAPkpBPFdAK1pCLVFEPlhANWJHOWJJMWpONGlQNnJZO0FBQU5EQEpJRkxLS1JHQVNKRVBOTF1OR1JRTl5QSlFRUVhWVFlYVltbWmJUTGtRRWpWTGBeWmtbUXVcQXZbT3hURGNhXnhhRnVkW3hhVntlWmRkZG1qZWxranBsZ3FuaXRxbHt0bXNzc3l2cHx4coVQOIBcSopbRoVxWpRwX55yXYNtYYtvYYxxZIN/eZV1ZZV7bZt6aqZhQ65hQb1oQ6J9a+w4Puw9QsdlPMhnPsVrRcVuSclrQ8RxTMxyTMV1UsR4VsF7XMt2Uc55U859WtB6VdF9WcB/YexGS+5cYfBkafFtcfF3evJ4fIWBe4mFfpSEcJWHeZ6Pf6mDb6mKer6Far2IbrCJdbyMdLiPerCQfruRfM+CX9OAXMCAYsCSfNWFYdaJZteKaNiMatmQbtuTc9qXe92Yd96ZeuCdfYSEhIuHgI2JgoqKipKNhpmNhJWRiZmUjJ6ZkJ2dnaKWjKGck62dlLWTgbqXhLmZh7ibirifkKWgl6ahmKiimaqkm6umnKymna6onrailLWpnbiplbusmq+poKmpqbCqoLKsorOtpLWroLSsorSupLWwprexqLm5ucOXgMaZgcuchdKdg8iijcaol82mkdCgh9Ojit+gg9mmjdypjtKqld2qkNiumN6znMS9tOqKiuGfgPOChvSMj/SNkOKjhOOmieWqjOWtkeKumOiukeawlOG1numyluq1muy4ne28o+u+qsPBv8vBtsvFv+/Apu3CrezEsu/It/DAp/DBqPHHsfHJtPLNusPDw8rGwc7JwtbW1tjU0d/b19vb2+/RxeDb1+nd1/nCw/nKzPPTwvTXyPTZy/Xd0fvW2Pva2/fg0/jl2+Tj4+jk4evr6/fo4fnr5fzt7Pvx7PTz8/318/349v7+/gAAAAAAAAAAAIt9dAgAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAGXRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjEzNANbegAAClFJREFUaEO1mX90FFcVx0k3efVHGzWxVbRT1tJ0YKNHNHrYxNJW688ey6mEFjYbSdxFqqb+KBSNsRuW0Y1GJFREsYCEtJJ4slo5WKxiK+LpZNZt3+zj6Iaz20DLkfoTrKQcCun84b1v3mzm1+6SP/ye/Jh9797P3Ln3vjczyby0v/YQqYwIqIZIOB+QtwlzP5VDp2+uxA7AJM43BFpHhb1XvujgzVt3P9xggvzE0ZwtkYbtwskjXzQJcKGrvwifE+yh7WPCzyl/NMYFl42u/uJUwa4JBHcLR4d80U3gg9UyARXEDWoCAbLFJ3Bf9AerMi2hIZAJ2SpcbfJFP1whFS7h9QVIbdMub6e40WNbbmlZ1MQ7wFSVC4BpjDpQs/AnglCSJ+ptmONAjfAEVWELA3Kb8J+VNyHDaGh2nulkrjy3PGOeLvHJ9RB6lRacybZ3izjCMXsPtQr3ktzobVtH07ehAw9csAOCwz+KQ0vcAkXchfSgF5GewVIVxW9B8VUpM2RQICx5EjLWUkeg6Ja9+bOyuI0ktQiCJTd6SAIypAC2TZRY7ILhVS0uF24iSUGBsORGjw6iFdjD9oROwhMxDvH9q+bGQzfhB7QAG4Gw5EnIfbOghR9vfkMtCE4yezZLAL76a6x4Px8y0XsFQsiDbuVW6Pt+ViwWC4VikR26c2lzc/MNjfW1V/BoQXWN796B8+wGtDWvrBpaFujAUjYJrkifxAP8ZuzZZ5/63aEdO3b86vfIxblDHI3sauixBWbMpPlYEQI2/fEAvyfzpTFLheL9tdwe3FyN7Ub/FO5baFn/lBsC8hkqFvN3inRXK+NetIF0LBeO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" :
+        VirtualPathUtility.ToAbsolute("~/upload/") + user.UserImage;
+    var st1 = ticket.UserData.Split(',')[3].ToString();
+    var st2 = ticket.UserData.Split(',')[1].ToString();
+    var st3 = ticket.UserData.Split(',')[2].ToString();
+}
+<!--[if IE 8]> <html lang="@UICulture" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="@UICulture" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="@UICulture" class="no-js@(hideNav ? " no-navigation" : "")">
+<!--<![endif]-->
+<head>
+
+    @{Html.RenderPartial(MVC.Views.Shared._LayoutHead);}
+    @RenderSection("Head", false)
+
+
+    <link href="~/Content/site/metro.css" rel="stylesheet" media='screen and (min-width: 850px) and (max-width: 2600px)'>
+    <link href="~/Content/s/metro-icons.css" rel="stylesheet">
+
+    <link href="~/Content/s/cssfont1.css?family=Tajawal&display=swap" rel="stylesheet">
+    <link href="~/Content/s/cssfont1.css?family=Exo+2:ital@1&display=swap" rel="stylesheet">
+    <link href="~/Content/s/css3.css?family=Segoe+UI" rel="stylesheet" type="text/css" />
+
+    <link href="~/Content/site/Custom.css" rel="stylesheet" media='screen and (min-width: 850px) and (max-width: 2600px)' />
+
+    <link href="~/Content/brand/brand.css?q=10005" rel="stylesheet" />
+
+    <title>@(ViewData["Title"]) - PMMS</title>
+
+
+</head>
+<body id="s-@(ViewData["PageId"])Page" class="@(ViewData["BodyClass"]) fixed sidebar-mini hold-transition FontPreference-@Fonts skin-@theme @(darkSidebar ? "dark-sidebar" : "light-sidebar")@(hideNav ? " no-navigation" : " has-layout-event")@(rtl ? " rtl" : "")">
+    @*@st1 == st2 && st3 == user.Username*@
+    @if (1==1)
+    {
+        <style>
+
+            .skin-blue .main-header .logo {
+                background-color: #49484c;
+            }
+
+            .skin-blue .main-header .navbar {
+                background-color: #49484c;
+            }
+
+            .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+                background-color: #49484c;
+            }
+
+            .skin-blue .sidebar-menu > li:hover > a, .skin-blue .sidebar-menu > li.active > a {
+                background: #49484c;
+            }
+
+            .skin-blue .sidebar-menu > li > .treeview-menu {
+                background-color: #67666a;
+            }
+
+            .sidebar-menu .treeview-menu > li > a {
+                color: white
+            }
+
+            .skin-blue .sidebar a {
+                color: white
+            }
+
+            .skin-blue .sidebar-form input[type="text"], .skin-blue .sidebar-form .btn {
+                background-color: white;
+            }
+
+            .skin-blue .treeview-menu > li.active > a, .skin-blue .treeview-menu > li > a:hover {
+                color: #ffffff;
+                background-color: #0078d7;
+            }
+        </style>
+        <div id="PageBackground" style="display: none"></div>
+
+        if (hideNav)
+        {
+            <script type="text/javascript">
+    $(function () {
+        @RenderSection("PageInitScript", false)
+    });
+            </script>
+            <div id="page-outer-nonav">
+                <div id="page-container" class="page-container-common">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="wrapper">
+                <header class="main-header">
+                    <a href="~/Apps/Inbox" class="logo">
+                        <span class="logo-mini"><i></i></span>
+                        @*<span class="logo-lg"><i></i><b>@LocalText.Get("Navigation.SiteTitle")</b></span>*@
+                        <span class="logo-lg"><i></i><b style=" font-family: 'Tajawal', sans-serif !important; font-size: 31px !important;float:left "><span class="bndname"></span></b></span>
+                    </a>
+                    <nav class="navbar navbar-static-top" role="navigation">
+                        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+                        @if (!System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+                        {
+                            <ul class="h-menu">
+                                <li>
+                                    <a href="~/Apps/Inbox">
+                                        <i class="fa  fa fa-th"></i>
+                                        <span>Home</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle">  <i class="fa  fa-globe"></i>     <span>Menu</span> </a>
+                                    <ul class="d-menu" data-role="dropdown">
+                                        @{Html.RenderPartial("~/Views/Shared/TopNavigation.cshtml", new PMMS.Navigation.NavigationModel()); }
+
+                                    </ul>
+                                </li>
+                                <li><a href="#">  <i class="fa  fa-info-circle"></i>   <span>About</span> </a></li>
+
+                                <li>
+                                    <a href="#" class="dropdown-toggle">  <i class="fa  fa-user"></i><span class="pdn-lft">My Profile</span> </a>
+                                    <ul class="d-menu" data-role="dropdown">
+
+                                        <li><a href="~/Account/ChangePassword">Change Passwod</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="~/Account/Signout">Logout</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+
+                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-sliders"></i>   <span>Setting</span> </a>
+
+                                </li>
+
+
+                                <li><a href="~/Account/Signout">  <i class="fa  fa-sign-out"></i>   <span>Logout</span> </a></li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="h-menu">
+
+                                <li><a href="~/Account/Signout">  <i class="fa  fa-sign-out"></i>   <span>الخروج</span> </a></li>
+
+
+
+                                <li>
+
+                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-sliders"></i>   <span>أعدادات</span> </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-toggle">  <i class="fa  fa-user"></i><span class="pdn-lft">الملف الشخصى</span> </a>
+                                    <ul class="d-menu" data-role="dropdown">
+
+                                        <li><a href="~/Account/ChangePassword">كلمة المرور</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="~/Account/Signout">تسجيل الخروج</a></li>
+                                    </ul>
+                                </li>
+
+
+                                <li><a href="#">  <i class="fa  fa-info-circle"></i>   <span>عن المنصة</span> </a></li>
+
+
+                                <li>
+                                    <a href="#" class="dropdown-toggle">  <i class="fa  fa-globe"></i>     <span>التطبيقات</span> </a>
+                                    <ul class="d-menu" data-role="dropdown">
+                                        @{Html.RenderPartial("~/Views/Shared/TopNavigation.cshtml", new PMMS.Navigation.NavigationModel()); }
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="~/Apps/Inbox">
+                                        <i class="fa  fa fa-th"></i>
+                                        <span>الرئيسية</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        }
+
+
+
+
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+
+                                <li class="dropdown user user-menu">
+
+                                    <a href="/Apps/inbox">
+                                        @*<img src="~/Content/images/notifications_white.png" class="user-image" alt="User Image">*@
+                                        <i class="nav-icon fa fa-dashboard" style=" font-size: 18px; "></i>
+                                        <span class="hidden-xs">My DashBoard</span>
+                                    </a>
+                                </li>
+
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="@userImage" class="user-image" alt="User Image">
+                                        <span class="hidden-xs">@Serenity.Authorization.Username</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- User image -->
+                                        <li class="user-header">
+                                            <img src="@userImage" class="img-circle" alt="User Image">
+
+                                            <p>
+                                                @(user != null ? user.DisplayName : "")
+                                            </p>
+                                        </li>
+
+                                        <!-- Menu Footer-->
+                                        <li class="user-footer">
+                                            <div class="pull-left">
+                                                <a href="~/Account/ChangePassword" class="btn btn-default btn-flat"><i class="fa fa-lock fa-fw"></i> @Texts.Forms.Membership.ChangePassword.FormTitle</a>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="~/Account/Signout" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> @LocalText.Get("Navigation.LogoutLink")</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-sliders"></i></a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+
+                <aside class="main-sidebar">
+                    <section class="sidebar">
+                        <form action="#" method="get" class="sidebar-form">
+                            <div class="input-group">
+                                <input type="text" id="SidebarSearch" name="q" class="form-control" autocomplete="off">
+                                <span class="input-group-btn">
+                                    <button type="button" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                        <ul class="sidebar-menu" id="SidebarMenu">
+                            @{Html.RenderPartial(MVC.Views.Shared.LeftNavigation, new PMMS.Navigation.NavigationModel()); }
+                        </ul>
+                    </section>
+                </aside>
+
+                <div class="content-wrapper">
+                    @if (IsSectionDefined("ContentHeader"))
+                    {
+                        <section class="content-header">
+                            @RenderSection("ContentHeader")
+                        </section>
+                    }
+                    <section class="content">
+                        @RenderBody()
+                    </section>
+                </div>
+
+                <footer class="main-footer">
+                    <div class="pull-right hidden-xs">
+                        Advanced Company For Engineering Consultancy
+                    </div>
+                    @*<strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights*@
+
+
+                    <img src="~/Content/images/adec.PNG" style="width:100px" />
+                </footer>
+
+                <aside class="control-sidebar control-sidebar-dark">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="control-sidebar-settings-tab">
+                            <form method="post">
+                                <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
+
+                                <div class="form-group">
+                                    <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
+                                    <select id="LanguageSelect" class="form-control"></select>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 15px;">
+                                    <label class="control-sidebar-subheading">@Texts.Site.Layout.Theme</label>
+                                    <select id="ThemeSelect" class="form-control"></select>
+                                </div>
+
+                                <div class="form-group" style="margin-top: 15px;">
+                                    <label class="control-sidebar-subheading">@Texts.Site.Layout.Fonts</label>
+                                    <select id="FontsSelect" class="form-control"></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </aside>
+                <div class="control-sidebar-bg"></div>
+            </div>
+
+            <script type="text/javascript">
+    $().ready(function () {
+        new PMMS.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
+        new PMMS.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
+        new PMMS.Common.ThemeSelection($('#ThemeSelect'));
+        new PMMS.Common.FontSelection($('#FontsSelect'));
+        @RenderSection("PageInitScript", false);
+
+        var doLayout = function () {
+            height = (this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height;
+            height -= $('header.main-header').outerHeight() || 0;
+            height -= $('section.content-header').outerHeight() || 0;
+            height -= $('footer.main-footer').outerHeight() || 0;
+            if (height < 200) height = 200;
+            $("section.content").css("min-height", (height) + "px");
+
+            $('body').triggerHandler('layout');
+        };
+
+        $(window).bind("load resize layout", doLayout);
+        doLayout();
+    });
+            </script>
+        }
+    }
+    else
+    {
+        <div style=" width: 600px; margin-right: auto; margin-left: auto; margin-top: 236px;text-align:center ">
+
+            <div class="page-content">
+                <div id="ForgotPasswordPanel" style=" background-color: white; padding: 27px; ">
+                    <div>
+                        <h3 class="page-title">Two Factor Auth</h3>
+                        <p class="form-info">
+                            We sent  OTP to your Email . please Verfiy !
+                        </p>
+
+                        @using (Html.BeginForm("MFA", "Dashboard", FormMethod.Post))
+                        {
+                            <div class="s-Form">
+                                <div class="fieldset ui-widget ui-widget-content ui-corner-all">
+
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            <input type="number" maxlength="6" id="MFAP" name="MFAP" class="form-control" style="width: 200px; margin-right: auto; margin-left: auto;">
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button id="~_SubmitButton" type="submit" class="btn btn-primary">
+                                        Ok
+                                    </button>
+
+                                    <a href="/Account/Signout" style=" padding: 13px; ">  <i class="fa  fa-sign-out"></i>   <span>Cancel</span> </a>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    }
+
+
+
+
+
+    <style>
+        .main-header .logo i {
+            animation: none !important;
+        }
+    </style>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <!--Render the gauge item. Add these scripts only if your report contains the gauge report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-base.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-data.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-pdf-export.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/ej2-svg-base.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-circulargauge.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-lineargauge.min.js")
+    <!--Renders the map item. Add this script only if your report contains the map report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej2-maps.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/bold.reports.common.min.js")
+    @Scripts.Render("~/Scripts/bold-reports/common/bold.reports.widgets.min.js")
+    <!--Renders the chart item. Add this script only if your report contains the chart report item.-->
+    @Scripts.Render("~/Scripts/bold-reports/data-visualization/ej.chart.min.js")
+    <!-- Report Viewer component script-->
+    @Scripts.Render("~/Scripts/bold-reports/bold.report-viewer.min.js")
+    @Scripts.Render("~/Content/site/metro.js?r=1")
+    @RenderSection("scripts", required: false)
+    @Html.Bold().ScriptManager()
+
+
+
+
+</body>
+</html>

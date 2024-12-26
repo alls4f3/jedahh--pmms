@@ -1,0 +1,17 @@
+﻿.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #a9a8a891 !important;
+}
+
+.thead-dark {
+    background-color: aliceblue;
+}
+
+.sidebar-submenu{
+
+  
+}
+
+.btn-success {
+    background-color: #2196F3 !important;
+    border-color: #2196F3 !important;
+}

@@ -1,0 +1,781 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Browse";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height row">
+    <div class="">
+        <div class="grid-title"><div class="title-text"> @LocalText.Get("Browse.Title")</div></div>
+
+
+
+
+      
+
+
+
+        <div class="sidebar-submenu col-md-2" >
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.RoadClass")</label>
+                <select class="form-control form-control-sm" id="RoadClassID" name="RoadClassID" style="margin-bottom:4pt;">
+                    <option value="0"> @LocalText.Get("Browse.All")</option>
+                    <option value="1"> @LocalText.Get("Browse.Road")</option>
+                    <option value="2">@LocalText.Get("Browse.Major/Collector")</option>
+                    <option value="3"> @LocalText.Get("Browse.Local")</option>
+                    <option value="4"> @LocalText.Get("Browse.Parking")</option>
+                    <option value="5"> @LocalText.Get("Browse.Utility")</option>
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.City")</label>
+                <select class="form-control form-control-sm" id="CityID" name="CityID"  style="margin-bottom:4pt;">
+                    <option value="0"> @LocalText.Get("Browse.PleaseSelectCity")</option>
+                    <option value="1"> @LocalText.Get("Browse.Dammam")</option>
+                    <option value="2"> @LocalText.Get("Browse.AlKhobar")</option>
+                    <option value="3"> @LocalText.Get("Browse.Dhahran")</option>
+                    <option value="4"> @LocalText.Get("Browse.Qatif")</option>
+                    <option value="5">  @LocalText.Get("Browse.Aziziah")</option>
+                    <option value="6"> @LocalText.Get("Browse.Sayhat")</option>
+                    <option value="7"> @LocalText.Get("Browse.Annak")</option>
+                    <option value="8"> @LocalText.Get("Browse.alqisoma")</option>
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.Zone")</label>
+                <select id="ZoneID" name="ZoneID"  class="form-control form-control-sm" style="margin-bottom:4pt;">
+                    <option> @LocalText.Get("Browse.SelectCityFirst")</option>
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.Area")</label>
+                <select id="AreaID" name="AreaID"  class="form-control form-control-sm" style="margin-bottom:4pt;">
+                    <option> @LocalText.Get("Browse.SelectZoneFirst")</option>
+                </select>
+
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.Road")</label>
+                <select id="RoadID" name="RoadID" class="form-control form-control-sm" style="margin-bottom:4pt;">
+                    <option> @LocalText.Get("Browse.SelectAreaFirst")</option>
+                </select>
+
+            </div>
+
+
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.Sections")</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input type="button"  id="btnSectionData" class="btn btn-success btn-sm" value="Pavement Section Details">
+                </div>
+            </div>
+            <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                <label style=";"> @LocalText.Get("Browse.Median/Sidewalk")</label>
+                <div style="margin-bottom:4pt;padding-right: 7px;padding-left: 7px;">
+                    <input id="btnMdianData"  class="btn btn-success btn-sm" value="Median/Sidewalk Details">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div style="font-size:smaller;" class="text-center col-md-10">
+
+            <div id="container">
+
+                <div id="divSectionData">
+                    <h4 style="color:#2196F3;" class="text-center"> @LocalText.Get("Browse.PavementSectionBrowser")</h4>
+
+
+
+                    <div style="font-size:smaller;height:400px;overflow:scroll" class="overflow-auto form-group row text-center">
+
+                        <table class=" table table-bordered" style="width:100%; background-color:#607D8B;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th> @LocalText.Get("Browse.SectionNumber")</th>
+                                    <th> @LocalText.Get("Browse.Dir")</th>
+                                    <th> @LocalText.Get("Browse.Ftr")</th>
+                                    <th> @LocalText.Get("Browse.Contractor")</th>
+                                    <th> @LocalText.Get("Browse.SurveyDate")</th>
+                                    <th> @LocalText.Get("Browse.WaterPonding")</th>
+                                    <th> @LocalText.Get("Browse.UtilityCut")</th>
+                                    <th> @LocalText.Get("Browse.Condition")</th>
+                                    <th> @LocalText.Get("Browse.M&RBefore")</th>
+                                    <th> @LocalText.Get("Browse.M&RAfter")</th>
+                                    <th> @LocalText.Get("Browse.M&RCost")</th>
+                                    <th> @LocalText.Get("Browse.Distress")</th>
+                                </tr>
+                            </thead>
+                            <tbody id="SectionData"></tbody>
+                        </table>
+                    </div>
+                    <hr>
+
+                </div>
+
+                
+
+                <div id="divMedian">
+                    <h4 style="color:#2196F3;" class="text-center"> @LocalText.Get("Browse.Median/SidewalkSectionBrowser")</h4>
+
+
+
+                    <div style="font-size:smaller;height:400px;overflow: scroll;" class="overflow-auto form-group row text-center">
+
+                        <table class=" table table-bordered" style="width:100%; background-color:slategrey;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th> @LocalText.Get("Browse.SectionNumber")</th>
+                                    <th> @LocalText.Get("Browse.Length")</th>
+                                    <th> @LocalText.Get("Browse.Width")</th>
+                                    <th> @LocalText.Get("Browse.PavingType")</th>
+                                    <th> @LocalText.Get("Browse.Kerbstone")</th>
+                                    <th> @LocalText.Get("Browse.DistressData")</th>
+                                </tr>
+                            </thead>
+                            <tbody id="MedianData"></tbody>
+                        </table>
+                    </div>
+                    <hr>
+
+                </div>
+
+
+
+            </div>
+
+            
+
+            <div id="containerDistress">
+
+                <div id="SubdivSectionData">
+                    <h4 style="color:#2196F3;" class="text-center"> @LocalText.Get("Browse.PavementDistressInformation")</h4>
+
+
+
+                    <div style="font-size:smaller;height:400px;width: 100%;overflow-x: scroll;" class="overflow-auto form-group row text-center">
+
+                        <table class=" table table-bordered" style="width:100%; background-color:#dadada;" id="tchild">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th> @LocalText.Get("Browse.Sample")</th>
+                                    <th> @LocalText.Get("Browse.PCI")</th>
+                                    <th> @LocalText.Get("Browse.Distress1")</th>
+                                    <th> @LocalText.Get("Browse.Severity1")</th>
+                                    <th> @LocalText.Get("Browse.Quantity1")</th>
+                                    <th> @LocalText.Get("Browse.Distress2")</th>
+                                    <th> @LocalText.Get("Browse.Severity2")</th>
+                                    <th> @LocalText.Get("Browse.Quantity2")</th>
+                                    <th> @LocalText.Get("Browse.Distress3")</th>
+                                    <th> @LocalText.Get("Browse.Severity3")</th>
+                                    <th> @LocalText.Get("Browse.Quantity3")</th>
+                                    <th> @LocalText.Get("Browse.Distress4")</th>
+                                    <th> @LocalText.Get("Browse.Severity4")</th>
+                                    <th> @LocalText.Get("Browse.Quantity4")</th>
+                                    <th> @LocalText.Get("Browse.Distress5")</th>
+                                    <th> @LocalText.Get("Browse.Severity5")</th>
+                                    <th> @LocalText.Get("Browse.Quantity5")</th>
+                                    <th> @LocalText.Get("Browse.Distress6")</th>
+                                    <th> @LocalText.Get("Browse.Severity6")</th>
+                                    <th> @LocalText.Get("Browse.Quantity6")</th>
+                                    <th> @LocalText.Get("Browse.Distress7")</th>
+                                    <th> @LocalText.Get("Browse.Severity7")</th>
+                                    <th> @LocalText.Get("Browse.Quantity7")</th>
+                                    <th> @LocalText.Get("Browse.Distress8")</th>
+                                    <th> @LocalText.Get("Browse.Severity8")</th>
+                                    <th> @LocalText.Get("Browse.Quantity8")</th>
+                                    <th> @LocalText.Get("Browse.Distress9")</th>
+                                    <th> @LocalText.Get("Browse.Severity9")</th>
+                                    <th> @LocalText.Get("Browse.Quantity9")</th>
+                                    <th> @LocalText.Get("Browse.Distress10")</th>
+                                    <th> @LocalText.Get("Browse.Severity10")</th>
+                                    <th> @LocalText.Get("Browse.Quantity10")</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="SubSectionData"></tbody>
+
+
+                        </table>
+
+
+                    </div>
+                    <hr>
+
+                </div>
+
+
+
+                <div id="SubdivMedian">
+                    <h4 style="color:#2196F3;" class="text-center">
+                         @LocalText.Get("Browse.Median/SidewalkDistressInformation")
+                    </h4>
+
+
+
+                    <div style="font-size:smaller;height:400px;width: 100%;overflow-x: scroll;" class="overflow-auto form-group row text-center">
+
+                        <table class=" table table-bordered" style="width:100%; background-color:#dadada;" id="tchild">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>  @LocalText.Get("Browse.Sample")</th>
+                                    <th> @LocalText.Get("Browse.PCI")</th>
+                                    <th> @LocalText.Get("Browse.Distress1")</th>
+                                    <th> @LocalText.Get("Browse.Severity1")</th>
+                                    <th> @LocalText.Get("Browse.Quantity1")</th>
+                                    <th> @LocalText.Get("Browse.Distress2")</th>
+                                    <th> @LocalText.Get("Browse.Severity2")</th>
+                                    <th> @LocalText.Get("Browse.Quantity2")</th>
+                                    <th> @LocalText.Get("Browse.Distress3")</th>
+                                    <th> @LocalText.Get("Browse.Severity3")</th>
+                                    <th> @LocalText.Get("Browse.Quantity3")</th>
+                                    <th> @LocalText.Get("Browse.Distress4")</th>
+                                    <th> @LocalText.Get("Browse.Severity4")</th>
+                                    <th> @LocalText.Get("Browse.Quantity4")</th>
+                                    <th> @LocalText.Get("Browse.Distress5")</th>
+                                    <th> @LocalText.Get("Browse.Severity5")</th>
+                                    <th> @LocalText.Get("Browse.Quantity5")</th>
+                                    <th> @LocalText.Get("Browse.Distress6")</th>
+                                    <th> @LocalText.Get("Browse.Severity6")</th>
+                                    <th> @LocalText.Get("Browse.Quantity6")</th>
+                                    <th> @LocalText.Get("Browse.Distress7")</th>
+                                    <th> @LocalText.Get("Browse.Severity7")</th>
+                                    <th> @LocalText.Get("Browse.Quantity7")</th>
+                                    <th> @LocalText.Get("Browse.Distress8")</th>
+                                    <th> @LocalText.Get("Browse.Severity8")</th>
+                                    <th> @LocalText.Get("Browse.Quantity8")</th>
+                                    <th> @LocalText.Get("Browse.Distress9")</th>
+                                    <th> @LocalText.Get("Browse.Severity9")</th>
+                                    <th> @LocalText.Get("Browse.Quantity9")</th>
+                                    <th> @LocalText.Get("Browse.Distress10")</th>
+                                    <th> @LocalText.Get("Browse.Severity10")</th>
+                                    <th> @LocalText.Get("Browse.Quantity10")</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="SubMdianData"></tbody>
+
+
+                        </table>
+
+
+                    </div>
+                    <hr>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    @*<input type="text" hidden="" id="CID" name="CID" value="1">*@
+
+</div>
+
+<style>
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+
+<script>
+
+
+    $(document).ready(function () {
+
+          
+
+        $("#divSectionData").hide();
+        $("#divMedian").hide();
+
+        $("#SubdivSectionData").hide();
+        $("#SubdivMedian").hide();
+
+
+        $.ajax({
+            type: "GET",
+            url: "/sysapi/getcity",
+            data: {
+                //  OID: orderid,
+
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                var dropdown = $('#CityID');
+                var dropdownzone = $('#ZoneID');
+                var dropdownarea = $('#AreaID');
+                var dropRoadID = $('#RoadID');
+
+
+                dropdown.empty();
+                dropdownzone.empty();
+                dropdownarea.empty();
+
+                dropRoadID.empty();
+
+
+
+
+                dropdown.append('<option selected="true" value="0">Please Select City</option>');
+                dropdown.prop('selectedIndex', 0);
+
+
+                $.each(result, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                })
+
+
+
+
+                $("#CityID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getZone",
+                        data: { id: $("#CityID").val() },
+                        success: function (t) {
+
+
+                            dropdownzone.empty();
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+
+
+                            dropdownzone.append('<option selected="true" value="0">Please Select  Zone</option>');
+                            dropdownzone.prop('selectedIndex', 0);
+
+
+                            $.each(t, function (key, entry) {
+                                dropdownzone.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+                        }
+                    });
+
+                })
+
+
+
+                $("#ZoneID").change(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getAreas",
+                        data: { id: $("#ZoneID").val(), id2: $("#CityID").val() },
+                        success: function (x) {
+                            dropdownarea.empty();
+                            dropRoadID.empty();
+
+
+                            dropdownarea.append('<option selected="true" value="0">Select Area</option>');
+                            dropdownarea.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropdownarea.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+
+                })
+
+
+                $("#AreaID").change(function () {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/sysapi/getRoad",
+                        data: { id: $("#CityID").val(), id2: $("#ZoneID").val(), id3: $("#AreaID").val() },
+                        success: function (x) {
+
+                            dropRoadID.empty();
+
+
+                            dropRoadID.append('<option selected="true" value="0">Select Road</option>');
+                            dropRoadID.prop('selectedIndex', 0);
+
+
+
+
+
+                            $.each(x, function (key, entry) {
+                                dropRoadID.append($('<option></option>').attr('value', entry.id).text(entry.Name));
+                            })
+
+
+
+                        }
+                    });
+                })
+
+
+
+
+            }
+
+            });
+
+
+      
+
+        function getrptpara() {
+
+
+            var result = "";
+
+            if ($("#CityID").val() <= 9) {
+                result = result.concat("0", $("#CityID").val());
+            }
+            else {
+                
+                result = result.concat($("#CityID").val());
+
+            }
+
+            if ($("#ZoneID").val() != 0 && $("#ZoneID").val() != null) {
+                if ($("#ZoneID").val() <= 9) {
+                    result = result.concat("0", $("#ZoneID").val());
+                }
+                else {
+                    result = result.concat($("#ZoneID").val());
+
+                }
+            }
+          
+            if ($("#AreaID").val() != 0 && $("#AreaID").val() != null) {
+
+                if ($("#AreaID").val() > 0 && $("#AreaID").val() <= 9) {
+                    result = result.concat("00", $("#AreaID").val());
+                }
+                else if ($("#AreaID").val() > 9 && $("#AreaID").val() <= 99) {
+                    result = result.concat("0", $("#AreaID").val());
+                }
+                else {
+                    result = result.concat($("#AreaID").val());
+
+                }
+            }
+
+           
+            if ($("#RoadID").val() != 0 && $("#RoadID").val()!=null) {
+                if ($("#RoadID").val() > 0 && $("#RoadID").val() <= 9) {
+                    result = result.concat("00", $("#RoadID").val());
+                }
+                else if ($("#RoadID").val() > 9 && $("#RoadID").val() <= 99) {
+                    result = result.concat("0", $("#RoadID").val());
+                }
+                else {
+                    result = result.concat($("#RoadID").val());
+
+                }
+            }
+
+           
+
+            return result;
+
+        }
+
+
+        $("#btnSectionData").click(function () {
+
+            LoadSectionData() 
+        })
+
+        $("#btnMdianData").click(function () {
+
+            LoadMdianData()
+        })
+
+        function LoadSectionData() {
+
+            if ($("#CityID").val() != 0 && $("#CityID").val() != null) {
+
+
+                $("#divSectionData").show();
+                $("#divMedian").hide();
+
+                $("#SubdivSectionData").show();
+                $("#SubdivMedian").hide();
+
+                var sectionnumber = getrptpara();
+             
+
+                Q.blockUI(null);
+                $.post("/Apps/Browse/GetData", {
+                    Section: sectionnumber,
+                    road: $("#RoadClassID").val(),
+                }, function (result) {
+                    Q.blockUndo();
+
+                        $("#SectionData").html(body1(result))
+
+                });
+
+
+
+
+
+
+            } else {
+                Q.warning("Please select the City")
+
+            }
+        }
+
+
+
+        function LoadMdianData() {
+
+            if ($("#CityID").val() != 0 && $("#CityID").val() != null) {
+
+
+                $("#divSectionData").hide();
+                $("#divMedian").show();
+
+                $("#SubdivSectionData").hide();
+                $("#SubdivMedian").show();
+
+                var sectionnumber = getrptpara();
+
+
+                Q.blockUI(null);
+                $.post("/Apps/Browse/GetData2", {
+                    Section: sectionnumber,
+                }, function (result) {
+                    Q.blockUndo();
+
+                        $("#MedianData").html(body2(result))
+
+                });
+
+
+
+
+
+
+            } else {
+                Q.warning("Please select the City")
+
+            }
+        }
+        
+    })
+
+
+    function body1(obj) {
+        var st=""
+        $.each(obj, function (key, value) {
+          
+
+            st = st +
+                ' <tr style="color:white;">'
+                + ' <td>'
+                + '<label>' + value.secnum +'</label>'
+                + '</td>'
+                + ' <td>'
+                + '<label>' + value.dir +'</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.ftr +'</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.contractor_no +'</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.survey_date +'</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.water_ponding + '</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.utility_cuts + '</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.Section_Rating +'</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.Distress_Condition_Before +'</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.Distress_Condition_After +'</label>'
+                + '</td>'
+                + '<td>'
+                + '   <label>' + value.Maintenance_Cost +'</label>'
+                + '</td>'
+                + '<td>'
+                + '   <input onclick="getSubDataSection(' + "'" + value.secnum + "'" +')" class="btn btn-warning btn-sm" type="button" value="Distress Data">'
+                + '          </td>'
+                + '     </tr>'
+        });
+
+        
+
+        return st.replace('null','');
+    }
+
+    function body2(obj) {
+        var st = ""
+        $.each(obj, function (key, value) {
+
+
+            st = st +
+                ' <tr style="color:white;">'
+                + ' <td>'
+                + '<label>' + value.SECTION_NO + '</label>'
+                + '</td>'
+                + ' <td>'
+                + '<label>' + value.SECTION_LENGTH + '</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.SECTION_WIDTH + '</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.PAVING_TYPE + '</label>'
+                + '</td>'
+                + '<td>'
+                + '<label>' + value.KERBSTONE_TYPE + '</label>'
+                + '</td>'
+                + '<td>'
+                + '   <input onclick="getSubDataMdian(' + "'" + value.SECTION_NO + "'" + ')" class="btn btn-warning btn-sm" type="button" value="Distress Data">'
+                + '          </td>'
+                + '     </tr>'
+        });
+
+
+
+        return st.replace('null', '');
+    }
+
+
+    function Subbody1(obj) {
+        var st = ""
+        $.each(obj, function (key, value) {
+
+         
+            st = st +
+                '<tr>' +
+                '<td>' + value.SAMPLE_NO +' </td>' +
+                '<td>' + value.SAMPLE_PCI+'</td>' +
+                '<td>' + value.DISTRESS_0 +'</td>' +
+                '<td>' + value.SEVERITY_0 +'</td>' +
+                '<td>' + value.QUANTITY_0 +'</td>' +
+                '<td>' + value.DISTRESS_1 +'</td>' +
+                '<td>' + value.SEVERITY_1 +'</td>' +
+                '<td>' + value.QUANTITY_1 +'</td>' +
+                '<td>' + value.DISTRESS_2 +'</td>' +
+                '<td>' + value.SEVERITY_2 +'</td>' +
+                '<td>' + value.QUANTITY_2 +'</td>' +
+                '<td>' + value.DISTRESS_3 +'</td>' +
+                '<td>' + value.SEVERITY_3 +'</td>' +
+                '<td>' + value.QUANTITY_3 +'</td>' +
+                '<td>' + value.DISTRESS_4 +'</td>' +
+                '<td>' + value.SEVERITY_4 +'</td>' +
+                '<td>' + value.QUANTITY_4 +'</td>' +
+                '<td>' + value.DISTRESS_5 +' </td>' +
+                '<td>' + value.SEVERITY_5 +' </td>' +
+                '<td>' + value.QUANTITY_5 +' </td>' +
+                '<td>' + value.DISTRESS_6 +' </td>' +
+                '<td>' + value.SEVERITY_6 +' </td>' +
+                '<td>' + value.QUANTITY_6 +' </td>' +
+                '<td>' + value.DISTRESS_7 +' </td>' +
+                '<td>' + value.SEVERITY_7 +' </td>' +
+                '<td>' + value.QUANTITY_7 +' </td>' +
+                '<td>' + value.DISTRESS_8 +' </td>' +
+                '<td>' + value.SEVERITY_8 +' </td>' +
+                '<td>' + value.QUANTITY_8 +' </td>' +
+                '<td>' + value.DISTRESS_9 +' </td>' +
+                '<td>' + value.SEVERITY_9 +' </td>' +
+                '<td>' + value.QUANTITY_9 +' </td>' 
+
+        });
+
+        var find = 'null';
+        var re = new RegExp(find, 'g');
+
+        st = st.replace(re, '-');
+
+        return st;
+    }
+
+    function getSubDataSection(sectionNumber) {
+
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Apps/Browse/GetSubData",
+            data: {
+                Section: sectionNumber,
+    
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                // console.log();
+                $("#SubSectionData").html(Subbody1(result))
+
+            }
+        })
+
+
+      
+
+    }
+
+
+    function getSubDataMdian(sectionNumber) {
+
+        $.ajax({
+            beforeSend: function () { Q.blockUI(null); }, complete: function () {
+                Q.blockUndo();
+            },
+            type: "GET",
+            url: "/Apps/Browse/GetSubData",
+            data: {
+                Section: sectionNumber,
+
+
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                // console.log();
+                $("#SubMdianData").html(Subbody1(result))
+
+            }
+        })
+
+
+
+
+    }
+</script>

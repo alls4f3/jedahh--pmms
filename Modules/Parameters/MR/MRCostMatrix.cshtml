@@ -1,0 +1,26 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "In-progress";
+}
+
+@section Head {
+@Html.Script("dynamic://Lookup.Northwind.CustomerCountry")
+@Html.Script("dynamic://Lookup.Northwind.CustomerCity")
+@Html.Script("dynamic://Lookup.Northwind.Employee")
+<script>var CKEDITOR_BASEPATH = '@ContentHashCache.ResolvePath("~/Scripts/ckeditor/")';</script>
+@Html.ScriptBundle("CKEditor")
+}
+
+<div id="GridDiv">
+
+    this page in progress .....
+</div>
+
+<script type="text/javascript">
+    //jQuery(function () {
+    //    new PMMS.Northwind.CustomerGrid($('#GridDiv'), {}).init();
+
+    //    Q.initFullHeightGridPage($('#GridDiv'));
+    //});
+</script>

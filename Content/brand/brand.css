@@ -1,0 +1,33 @@
+﻿/*.main-header .logo i {
+    background: url(/content/brand/ailogo.png)no-repeat center center !important;
+    background-size: contain !important;
+    height: 40px !important;
+    
+}
+.bndname:after {
+   
+    content: "منصة رؤية"
+}
+
+.brand1 {
+    display: none !important;
+}*/
+
+/*.brand2
+{
+    display:none;
+
+}*/
+
+ /*jehaah*/
+
+.brand2 {
+   
+    display:none;
+    }
+
+
+.bndname:after {
+   content: "راصـــــفــــــــ";
+   
+}

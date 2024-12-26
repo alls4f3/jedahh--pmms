@@ -1,0 +1,214 @@
+﻿@using Kendo.Mvc.UI;
+
+@model PMMS.Northwind.GeneralDashBoardPageModel
+@{
+    /**/
+
+    ViewData["Title"] = "DashBoard";
+    ViewData["PageId"] = "DashBoard";
+}
+
+@section Head {
+    <link href="~/Content/flows/flowy.min.css" rel="stylesheet" />
+    <script src="~/Content/flows/flowy.js"></script>
+    <script src="~/Content/flows/main.js"></script>
+    <link href="~/Content/flows/styles.css" rel="stylesheet" />
+    @Html.StyleBundle("Pages/Dashboard")
+    @Html.ScriptBundle("Pages/Dashboard")
+}
+
+@section ContentHeader {
+    <h1>@Html.Raw(Texts.Site.Dashboard.DashboardDescription)</h1>
+}
+
+
+
+
+@*<!-- Main row -->
+    <div class="row">
+
+
+
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-12 connectedSortable">
+            <!-- Map box -->
+            <div class="box box-solid">
+                <div class="box-header">
+
+                    <i class="fa fa-map-marker"></i>
+                    <h3 class="box-title">
+                        Workflow Desginer
+                    </h3>
+                </div>
+                <div class="box-body">
+
+                    <div class="create-flowy">The block to be dragged</div>
+                    <div id="canvas"></div>
+
+
+
+
+                </div><!-- /.box-body-->
+
+            </div>
+
+        </section>
+
+
+        <!-- right col -->
+    </div><!-- /.row (main row) -->*@
+
+
+
+<div id="navigation">
+    <div id="leftside">
+        <div id="details">
+            <div id="back"><img src="~/Content/flows/arrow.svg"></div>
+            <div id="names">
+                <p id="title">Your automation pipeline</p>
+                <p id="subtitle">Marketing automation</p>
+            </div>
+        </div>
+    </div>
+    <div id="centerswitch">
+        <div id="leftswitch">Diagram view</div>
+        <div id="rightswitch">Code editor</div>
+    </div>
+    <div id="buttonsright">
+        <div id="discard">Discard</div>
+        <div id="publish">Publish to site</div>
+    </div>
+</div>
+<div id="leftcard">
+    
+    
+    
+    <div id="subnav">
+        <div id="triggers" class="navactive side">Triggers</div>
+        <div id="actions" class="navdisabled side">Actions</div>
+        <div id="loggers" class="navdisabled side">Loggers</div>
+    </div>
+    <div id="blocklist">
+        <div class="blockelem create-flowy noselect">
+            <input type="hidden" name='blockelemtype' class="blockelemtype" value="1">
+            <div class="grabme">
+                <img src="~/Content/flows/grabme.svg">
+            </div>
+            <div class="blockin">
+                <div class="blockico">
+                    <span></span>
+                    <img src="~/Content/flows/eye.svg">
+                </div>
+                <div class="blocktext">
+                    <p class="blocktitle">New visitor</p>
+                    <p class="blockdesc">Triggers when somebody visits a specified page</p>
+                </div>
+            </div>
+        </div>
+        <div class="blockelem create-flowy noselect">
+            <input type="hidden" name='blockelemtype' class="blockelemtype" value="2">
+            <div class="grabme">
+                <img src="~/Content/flows/grabme.svg">
+            </div>
+            <div class="blockin">
+                <div class="blockico">
+                    <span></span>
+                    <img src="~/Content/flows/action.svg">
+                </div>
+                <div class="blocktext">
+                    <p class="blocktitle">Action is performed</p>
+                    <p class="blockdesc">Triggers when somebody performs a specified action</p>
+                </div>
+            </div>
+        </div>
+        <div class="blockelem create-flowy noselect">
+            <input type="hidden" name='blockelemtype' class="blockelemtype" value="3">
+            <div class="grabme">
+                <img src="~/Content/flows/grabme.svg">
+            </div>
+            <div class="blockin">
+                <div class="blockico">
+                    <span></span>
+                    <img src="~/Content/flows/time.svg">
+                </div>
+                <div class="blocktext">
+                    <p class="blocktitle">Time has passed</p>
+                    <p class="blockdesc">Triggers after a specified amount of time</p>
+                </div>
+            </div>
+        </div>
+        <div class="blockelem create-flowy noselect">
+            <input type="hidden" name='blockelemtype' class="blockelemtype" value="4">
+            <div class="grabme">
+                <img src="~/Content/flows/grabme.svg">
+            </div>
+            <div class="blockin">
+                <div class="blockico">
+                    <span></span>
+                    <img src="~/Content/flows/error.svg">
+                </div>
+                <div class="blocktext">
+                    <p class="blocktitle">Error prompt</p>
+                    <p class="blockdesc">Triggers when a specified error happens</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<div id="propwrap">
+    <div id="properties">
+        <div id="close">
+            <img src="~/Content/flows/close.svg">
+        </div>
+        <p id="header2">Properties</p>
+        <div id="propswitch">
+            <div id="dataprop">Data</div>
+            <div id="alertprop">Alerts</div>
+            <div id="logsprop">Logs</div>
+        </div>
+        <div id="proplist">
+            <p class="inputlabel">Select database</p>
+            <div class="dropme">Database 1 <img src="~/Content/flows/dropdown.svg"></div>
+            <p class="inputlabel">Check properties</p>
+            <div class="dropme">All<img src="~/Content/flows/dropdown.svg"></div>
+            <div class="checkus"><img src="~/Content/flows/checkon.svg"><p>Log on successful performance</p></div>
+            <div class="checkus"><img src="~/Content/flows/checkoff.svg"><p>Give priority to this block</p></div>
+        </div>
+        <div id="divisionthing"></div>
+        <div id="removeblock">Delete blocks</div>
+    </div>
+</div>
+<div id="canvas">
+</div>
+
+
+
+<style>
+
+    .k-content h4 {
+        text-align: right;
+        padding: 5px;
+    }
+
+    .k-input {
+        padding-right: 25px !important;
+    }
+</style>
+
+
+<script>
+    var spacing_x = 40;
+    var spacing_y = 100;
+    // Initialize Flowy
+    flowy(document.getElementById("canvas"), onGrab, onRelease, onSnap, spacing_x, spacing_y);
+    function onGrab(block) {
+        // When the user grabs a block
+    }
+    function onRelease() {
+        // When the user releases a block
+    }
+    function onSnap(block, first, parent) {
+        // When a block snaps with another one
+    }
+</script>

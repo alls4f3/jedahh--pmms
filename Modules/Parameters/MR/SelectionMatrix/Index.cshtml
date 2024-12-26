@@ -1,0 +1,505 @@
+﻿
+@{
+    //ViewData["Title"] = Serenity.LocalText.Get("Db.Northwind.Customer.EntityPlural");
+    ViewData["Title"] = "Selection Matrix";
+}
+
+@section Head {
+    <link href="~/Content/CustomePagesStyle.css" rel="stylesheet" />
+}
+
+<div id="GridDiv" class="s-CityGrid s-Default-CityGrid s-DataGrid require-layout route-handler responsive-height">
+
+    <div class="">
+
+        <div class="grid-title"><div class="title-text">Selection Matrix Suggested M&amp;R for Pavement</div></div>
+
+        <div class="">
+            <div class="col-md-6">
+                <label>Distress</label>
+                <select class="form-control form-control-sm" id="Listt" name="Listt" onchange="DisChanged()">
+                    <option value="0">Not Selected</option>
+                    <option value="01"> 01-Alligator Cracking</option>
+                    <option value="02"> 02-Bleeding</option>
+                    <option value="03"> 03-Block Cracking</option>
+                    <option value="04"> 04-Bumps and Sags</option>
+                    <option value="05"> 05-Corrugation</option>
+                    <option value="06"> 06-Depression</option>
+                    <option value="07">07-Edge Cracking</option>
+                    <option value="08"> 08-Joint Reflection Cracking</option>
+                    <option value="09"> 09-Lane/Shoulder Drop-Off</option>
+                    <option value="10"> 10-Long./Trans. Cracking</option>
+                    <option value="11"> 11-Patching and Utility Cut</option>
+                    <option value="12"> 12-Polished Aggregate</option>
+                    <option value="13"> 13-Potholes</option>
+                    <option value="14"> 14-Railroad Crossing Crossing</option>
+                    <option value="15"> 15-Rutting</option>
+                    <option value="16"> 16-Shoving</option>
+                    <option value="17"> 17-Slippage Cracking</option>
+                    <option value="18"> 18-Swell</option>
+                    <option value="19">19-Weathering and Raveling</option>
+
+                 
+                </select>
+                <select class="form-control form-control-sm" id="Listtm" name="Listtm" onchange="DisChangedM()" style="display: none;">
+                    <option value="0">Not Selected</option>
+                    <option value="20">01-Sidewalk/Median Settlemen</option>
+                    <option value="21">02-Sidewalk/Median Damage</option>
+                    <option value="22">03-Sidewalk/Median Pain</option>
+                    <option value="23">04-Kerbstone Disaligned</option>
+                    <option value="24">05-Kerbstone Damage</option>
+                   
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label>Sidewalk &amp; Median</label>
+                <br />
+                <input id="CheckBoxSwitch" type="checkbox">
+
+
+
+            </div>
+        </div>
+        <hr/>
+        <br />
+        <br />
+
+        <div class="">
+
+
+
+            <table class=" table table-bordered" style="width:100%;">
+
+                <thead class="thead-dark">
+
+                    <tr>
+                        <th><span id="Slevel">Severity Level</span></th>
+                        <th>≤10</th>
+                        <th>&gt;10-30</th>
+                        <th>&gt;30-60</th>
+                        <th>&gt;60</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <h6 style="" id="SML">Low</h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="LOW_LOW" value="0" name="LOW_LOW" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="LOW_MEDIUM" value="0" name="LOW_MEDIUM" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="LOW_HIGH" value="0" name="LOW_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="LOW_VERY_HIGH" value="0" name="LOW_VERY_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr id="SMD">
+                        <th scope="row">
+                            <h6 style="">Medium</h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MEDIUM_LOW" value="0" name="MEDIUM_LOW" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MEDIUM_MEDIUM" value="0" name="MEDIUM_MEDIUM" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MEDIUM_HIGH" value="0" name="MEDIUM_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="MEDIUM_VERY_HIGH" value="0" name="MEDIUM_VERY_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr id="SMH">
+                        <th scope="row">
+                            <h6 style="">High</h6>
+                        </th>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="HIGH_LOW" value="0" name="HIGH_LOW" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="HIGH_MEDIUM" value="0" name="HIGH_MEDIUM" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="HIGH_HIGH" value="0" name="HIGH_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-12 row">
+                                <input id="HIGH_VERY_HIGH" value="0" name="HIGH_VERY_HIGH" type="number" min="0" step="1" class="form-control form-control-sm">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+        <hr>
+        <div class="form-group row">
+            <div class="col-md-10">
+                <input type="button" id="save" name="save" value="Save Changes" class="form-control-sm btn btn-primary btn-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //jQuery(function () {
+    //    new PMMS.Northwind.CustomerGrid($('#GridDiv'), {}).init();
+
+    //    Q.initFullHeightGridPage($('#GridDiv'));
+    //});
+
+    $(document).ready(function () {
+
+        $('#CheckBoxSwitch').click(function () {
+            if ($(this).is(":checked")) {
+                $('#Listtm').val(0);
+                $('#Listtm').show();
+                $('#Listt').hide();
+                $("#SMD").hide();
+                $("#SMH").hide();
+                $("#SML").hide();
+                $("#Slevel").hide();
+
+                
+            }
+            else {
+                $('#Listt').show();
+                $('#Listt').val(0);
+                $('#Listtm').hide();
+                $("#SMD").show();
+                $("#SMH").show();
+                $("#SML").show();
+                $("#Slevel").show();
+            }
+
+            $("#LOW_LOW").val(0);
+            $("#LOW_MEDIUM").val(0);
+            $("#LOW_HIGH").val(0);
+            $("#LOW_VERY_HIGH").val(0);
+            $("#MEDIUM_LOW").val(0);
+            $("#MEDIUM_MEDIUM").val(0);
+            $("#MEDIUM_HIGH").val(0);
+            $("#MEDIUM_VERY_HIGH").val(0);
+            $("#HIGH_LOW").val(0);
+            $("#HIGH_MEDIUM").val(0);
+            $("#HIGH_HIGH").val(0);
+            $("#HIGH_VERY_HIGH").val(0);
+
+        });
+    })
+
+
+    function DisChanged() {
+        if ($('#Listt').val() != 0) {
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () { Q.blockUndo();},
+                type: "GET",
+                url: "/Parameters/SelectionMatrix/GetData",
+                data: { Id: $('#Listt').val() },
+                contentType: "application/json",
+                success: function (result) {
+                    $("#LOW_LOW").val(result[0].LOW_LOW);
+                    $("#LOW_MEDIUM").val(result[0].LOW_MEDIUM);
+                    $("#LOW_HIGH").val(result[0].LOW_HIGH);
+                    $("#LOW_VERY_HIGH").val(result[0].LOW_VERY_HIGH);
+                    $("#MEDIUM_LOW").val(result[0].MEDIUM_LOW);
+                    $("#MEDIUM_MEDIUM").val(result[0].MEDIUM_MEDIUM);
+                    $("#MEDIUM_HIGH").val(result[0].MEDIUM_HIGH);
+                    $("#MEDIUM_VERY_HIGH").val(result[0].MEDIUM_VERY_HIGH);
+                    $("#HIGH_LOW").val(result[0].HIGH_LOW);
+                    $("#HIGH_MEDIUM").val(result[0].HIGH_MEDIUM);
+                    $("#HIGH_HIGH").val(result[0].HIGH_HIGH);
+                    $("#HIGH_VERY_HIGH").val(result[0].HIGH_VERY_HIGH);
+                }
+            })
+        }
+        else {
+            $("#LOW_LOW").val(0);
+            $("#LOW_MEDIUM").val(0);
+            $("#LOW_HIGH").val(0);
+            $("#LOW_VERY_HIGH").val(0);
+            $("#MEDIUM_LOW").val(0);
+            $("#MEDIUM_MEDIUM").val(0);
+            $("#MEDIUM_HIGH").val(0);
+            $("#MEDIUM_VERY_HIGH").val(0);
+            $("#HIGH_LOW").val(0);
+            $("#HIGH_MEDIUM").val(0);
+            $("#HIGH_HIGH").val(0);
+            $("#HIGH_VERY_HIGH").val(0);
+        }
+
+    }
+    function DisChangedM() {
+        if ($('#Listtm').val() != 0) {
+            $.ajax({
+                beforeSend: function () { Q.blockUI(null); }, complete: function () { Q.blockUndo(); },
+                type: "GET",
+                url: "/Parameters/SelectionMatrix/GetData",
+                data: { Id: $('#Listtm').val() },
+                contentType: "application/json",
+                success: function (result) {
+                   
+                    $("#LOW_LOW").val(result[0].LOW_LOW);
+                    $("#LOW_MEDIUM").val(result[0].LOW_MEDIUM);
+                    $("#LOW_HIGH").val(result[0].LOW_HIGH);
+                    $("#LOW_VERY_HIGH").val(result[0].LOW_VERY_HIGH);
+                    $("#MEDIUM_LOW").val(result[0].MEDIUM_LOW);
+                    $("#MEDIUM_MEDIUM").val(result[0].MEDIUM_MEDIUM);
+                    $("#MEDIUM_HIGH").val(result[0].MEDIUM_HIGH);
+                    $("#MEDIUM_VERY_HIGH").val(result[0].MEDIUM_VERY_HIGH);
+                    $("#HIGH_LOW").val(result[0].HIGH_LOW);
+                    $("#HIGH_MEDIUM").val(result[0].HIGH_MEDIUM);
+                    $("#HIGH_HIGH").val(result[0].HIGH_HIGH);
+                    $("#HIGH_VERY_HIGH").val(result[0].HIGH_VERY_HIGH);
+                }
+            })
+        }
+        else {
+            $("#LOW_LOW").val(0);
+            $("#LOW_MEDIUM").val(0);
+            $("#LOW_HIGH").val(0);
+            $("#LOW_VERY_HIGH").val(0);
+            $("#MEDIUM_LOW").val(0);
+            $("#MEDIUM_MEDIUM").val(0);
+            $("#MEDIUM_HIGH").val(0);
+            $("#MEDIUM_VERY_HIGH").val(0);
+            $("#HIGH_LOW").val(0);
+            $("#HIGH_MEDIUM").val(0);
+            $("#HIGH_HIGH").val(0);
+            $("#HIGH_VERY_HIGH").val(0);
+        }
+
+    }
+
+
+
+    $('#save').click(function () {
+
+
+        var currentSelect = 0;
+        var IsSideWalk = false;
+      
+        if ($('#CheckBoxSwitch').is(":checked") == true) {
+            currentSelect = $("#Listtm").val();
+            IsSideWalk = true;
+        } else {
+            currentSelect = $("#Listt").val();
+            IsSideWalk = false;
+
+        }
+
+        if (currentSelect == 0) {
+          
+            Q.warning("Please select Distress", "Please select Distress!")
+        }
+        else {
+
+            if (valid(IsSideWalk) == true) {
+                $.ajax({
+                    beforeSend: function () { $('#loading-ajax').show(); }, complete: function () { $('#loading-ajax').hide(); },
+                    type: "GET",
+                    url: "/Parameters/SelectionMatrix/SaveData",
+                    data: {
+                        currentSelect: currentSelect,
+                        IsSideWalk: IsSideWalk,
+                        LOW_LOW: $("#LOW_LOW").val(),
+                        LOW_MEDIUM: $("#LOW_MEDIUM").val(),
+                        LOW_HIGH: $("#LOW_HIGH").val(),
+                        LOW_VERY_HIGH: $("#LOW_VERY_HIGH").val(),
+                        MEDIUM_LOW: $("#MEDIUM_LOW").val(),
+                        MEDIUM_MEDIUM: $("#MEDIUM_MEDIUM").val(),
+                        MEDIUM_HIGH: $("#MEDIUM_HIGH").val(),
+                        MEDIUM_VERY_HIGH: $("#MEDIUM_VERY_HIGH").val(),
+                        HIGH_LOW: $("#HIGH_LOW").val(),
+                        HIGH_MEDIUM: $("#HIGH_MEDIUM").val(),
+                        HIGH_HIGH: $("#HIGH_HIGH").val(),
+                        HIGH_VERY_HIGH: $("#HIGH_VERY_HIGH").val()
+                    }
+                    ,
+                    contentType: "application/json",
+                    success: function (result) {
+                        if (result == 'done') {
+                            Q.notifySuccess("data Saved Successfully!", "Message")
+                        }
+                        else {
+                            Q.warning("Message", "Error!")
+
+
+                        }
+                    }
+                })
+            } else {
+                Q.warning("Invalid Value - All values must Numbers between 1 to 1000!")
+            }
+
+     
+
+        }
+    });
+
+    function valid(IsSideWalk) {
+        var flag = false;
+        if (IsSideWalk == true) {
+            if (Number($('#LOW_LOW').val()) > 0 && Number($('#LOW_LOW').val()) <= 1000) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#LOW_MEDIUM').val()) > 0 && Number($('#LOW_MEDIUM').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#LOW_HIGH').val()) > 0 && Number($('#LOW_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#LOW_VERY_HIGH').val()) > 0 && Number($('#LOW_VERY_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+        }
+        else {
+            if (Number($('#LOW_LOW').val()) > 0 && Number($('#LOW_LOW').val()) <= 1000) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#LOW_MEDIUM').val()) > 0 && Number($('#LOW_MEDIUM').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#LOW_HIGH').val()) > 0 && Number($('#LOW_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#LOW_HIGH').val()) > 0 && Number($('#LOW_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#LOW_VERY_HIGH').val()) > 0 && Number($('#LOW_VERY_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#MEDIUM_LOW').val()) > 0 && Number($('#MEDIUM_LOW').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#MEDIUM_MEDIUM').val()) > 0 && Number($('#MEDIUM_MEDIUM').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#MEDIUM_HIGH').val()) > 0 && Number($('#MEDIUM_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+            if (Number($('#MEDIUM_VERY_HIGH').val()) > 0 && Number($('#MEDIUM_VERY_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#HIGH_LOW').val()) > 0 && Number($('#HIGH_LOW').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#HIGH_MEDIUM').val()) > 0 && Number($('#HIGH_MEDIUM').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#HIGH_HIGH').val()) > 0 && Number($('#HIGH_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+
+
+            if (Number($('#HIGH_VERY_HIGH').val()) > 0 && Number($('#HIGH_VERY_HIGH').val()) <= 1000 && flag != false) {
+                flag = true;
+            }
+            else {
+                flag = false;
+            }
+        }
+       
+        return flag;
+    }
+
+</script>
